@@ -5,7 +5,7 @@ const MAX_DESC_LENGTH = 500;
 const MAX_NAME_LENGTH = 20;
 
 
-export async function getProducts() {
+async function getProducts() {
   // retorna todos los produtos activos
   const products = await Producto.findAll({
     where: { activo: true },
@@ -16,20 +16,20 @@ export async function getProducts() {
 }
 
 
-export async function getProduct(identifier) {
+async function getProduct(identifier) {
   // retorna un producto en particular
   const validUID = /^[0-9a-fA-F]{8}\b-([0-9a-fA-F]{4}-){3}\b[0-9a-fA-F]{12}$/;
-  const user_id = validUID.test(identifier) && identifier;
+  const uid = validUID.test(identifier) && identifier;
 
   const products = await getProducts();
   // si el identificador es un UID valido, buscar por UID
-  const product = products.find(prod => user_id ? prod.uid === user_id : prod.name === identifier);
+  const product = products.find(prod => uid ? prod.uid === uid : prod.name === identifier);
 
   return product; // retornar la instancia del modelo
 }
 
 
-export async function createProduct(data) {
+async function createProduct(data) {
   // crear un producto
   // se asume que los datos ya han sido validados
   const { nombre, precio, tipo_corte, presentacion, comentario, stock } = data;
@@ -42,7 +42,7 @@ export async function createProduct(data) {
 }
 
 
-export async function updateProduct(productId, data) {
+async function updateProduct(productId, data) {
   // actualizar datos de un producto
   const product = await getProduct(productId);
 
@@ -61,7 +61,7 @@ export async function updateProduct(productId, data) {
 }
 
 
-export async function deleteProduct(productId) {
+async function deleteProduct(productId) {
   // borrar (desactivar) un producto de la base de datos
   const product = await getProduct(productId);
 
@@ -80,7 +80,7 @@ export async function deleteProduct(productId) {
 }
         
 
-export function validateProduct(nombre, precio, tipo_corte, presentacion, comentario, stock, activo) {
+function validateProduct(nombre, precio, tipo_corte, presentacion, comentario, stock, activo) {
   // validar / formatear datos
   nombre = String(nombre).replace(/\W/g, '');
   const values = { nombre, precio, tipo_corte, presentacion, comentario, stock };
@@ -117,3 +117,13 @@ export function validateProduct(nombre, precio, tipo_corte, presentacion, coment
 
   return out;
 }
+
+
+module.exports = {
+  getProducts,
+  getProduct,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+  validateProduct
+};
