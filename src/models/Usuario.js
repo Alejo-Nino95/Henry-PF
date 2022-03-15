@@ -2,7 +2,7 @@ const sequelize = require("sequelize");
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("usuarios", {
+  sequelize.define("Usuario", {
     correo: {
       primaryKey: true,
       type: DataTypes.INTEGER,
@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     contraseña: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, // previamente encriptada
       allowNull: false,
     },
   });
