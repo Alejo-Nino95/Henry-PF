@@ -31,6 +31,7 @@ export async function getProduct(identifier) {
 
 export async function createProduct(data) {
   // crear un producto
+  // se asume que los datos ya han sido validados
   const { nombre, precio, tipo_corte, presentacion, comentario, stock } = data;
   const newProduct = await Producto.create({ nombre, precio, tipo_corte, presentacion, comentario, stock });
 
@@ -68,10 +69,10 @@ export async function deleteProduct(productId) {
     return { error: `Producto con id:${productId} no existe.` };
   }
 
-  const updated = await product.update({ activo: false }); // cambiar a inactivo
+  const deleted = await product.update({ activo: false }); // cambiar a inactivo
 
-  if (!updated) {
-    return { error: `No se pudo actualizar el producto id:${productId}.` };
+  if (!deleted) {
+    return { error: `No se pudo borrar el producto id:${productId}.` };
   }
 
   return true;
