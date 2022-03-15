@@ -28,5 +28,9 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING, // previamente encriptada
       allowNull: false,
     },
+    activo: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    }
   });
 };
