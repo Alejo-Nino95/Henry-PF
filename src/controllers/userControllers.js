@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const salt = 10;
 
-export async function getUsers() {
+async function getUsers() {
   // retorna todos los produtos activos
   const users = await Usuario.findAll({
     where: { activo: true },
@@ -15,7 +15,7 @@ export async function getUsers() {
 }
 
 
-export async function getUser(identifier) {
+async function getUser(identifier) {
   // retorna un usuario en particular
   // TODO: agregar mas formas de buscar usuarios(telefono)
   const validEmail = /^.+@.+\..+$/; // TODO: fix
@@ -28,7 +28,7 @@ export async function getUser(identifier) {
 }
 
 
-export async function createUser(data) {
+async function createUser(data) {
   // crear un usuario
   let { correo, nombre, apellido, celular, dirección, contraseña } = data;
 
@@ -42,7 +42,7 @@ export async function createUser(data) {
 }
 
 
-export async function updateUser(userId, data) {
+async function updateUser(userId, data) {
   // actualizar datos de un usuario
   // se asume que los datos ya han sido validados
   const user = await getUser(userId);
@@ -62,7 +62,7 @@ export async function updateUser(userId, data) {
 }
 
 
-export async function deleteUser(userId) {
+async function deleteUser(userId) {
   // borrar (desactivar) un usuario de la base de datos
   const user = await getUser(userId);
 
@@ -81,7 +81,7 @@ export async function deleteUser(userId) {
 }
 
 
-export function validateUser(data) {
+function validateUser(data) {
   // validar / formatear datos
   let { correo, nombre, apellido, celular, dirección, contraseña } = data;
   nombre = String(nombre).replace(/\W/g, '');
@@ -128,3 +128,13 @@ export function validateUser(data) {
 
   return out;
 }
+
+
+module.exports = {
+  getUsers,
+  getUser,
+  createUser,
+  updateUser,
+  deleteUser,
+  validateUser
+};
