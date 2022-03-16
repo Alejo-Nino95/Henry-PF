@@ -23,7 +23,7 @@ async function getProduct(identifier) {
 
   const products = await getProducts();
   // si el identificador es un UID valido, buscar por UID
-  const product = products.find(prod => uid ? prod.uid === uid : prod.name === identifier);
+  const product = products.find(prod => uid ? prod.uid === uid : prod.nombre === identifier);
 
   return product; // retornar la instancia del modelo
 }
