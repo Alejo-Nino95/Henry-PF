@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   sequelize.define("Usuario", {
     correo: {
       primaryKey: true,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     nombre: {
@@ -17,10 +17,10 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     celular: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    dirección: {
+    direccion: {
       type: DataTypes.STRING,
       allowNull: false,
     },
