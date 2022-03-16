@@ -9,11 +9,29 @@ const {
 const router = require('express').Router();;
 
 
-// router.get('/endpoint', async(req,res)=>{
+router.post('/create', async (req, res) => {
+  res.status(200).send({ message: "ruta para crear categoria" });
+});
 
-//   // logica
 
-// })
+router.get('/all', async (req, res) => {
+  res.status(200).send({ message: "ruta para traer todos las categorias" });
+});
+
+
+router.get('/get/:categoria', async (req, res) => {
+  res.status(200).send({ message: "ruta para traer 1 categoria por ID" });
+});
+
+
+router.put('/update/:categoria', async (req, res) => {
+  res.status(200).send({ message: "ruta para actualizar categoria" });
+});
+
+
+router.delete('/delete/:categoria', async (req, res) => {
+  res.status(200).send({ message: "ruta para borrar categoria" });
+});
 
 
 module.exports = router;
