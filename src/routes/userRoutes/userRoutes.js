@@ -31,7 +31,7 @@ router.post('/create', async (req, res) => {
     return res.status(500).send({ error: 'No se pudo crear el usuario.' });
   }
 
-  res.status(200).send(newUser);
+  res.status(200).send({ mensaje: 'Usuario ha sido creado.' });
 
 });
 
@@ -65,7 +65,8 @@ router.get('/all', async (req, res) => {
 
 });
 
-
+// nepundir: TODO: fix - si no manda todos los datos, el controlador bota errores
+// debe poder actualizar solo los datos que se le manden por body
 router.put('/update/:userId', async (req, res) => {
 
   const { userId } = req.params;
@@ -89,7 +90,7 @@ router.put('/update/:userId', async (req, res) => {
     return res.status(400).send({ error: 'No se pudo actualizar los datos del usuario' });
   }
 
-  res.status(200).send(updated);
+  res.status(200).send({ mensaje: 'Usuario actualizado' });
 
 });
 
