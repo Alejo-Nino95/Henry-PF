@@ -2,6 +2,7 @@ const { Usuario } = require('../db.js');
 const bcrypt = require('bcrypt');
 
 const salt = 10;
+const MAX_NAME_LENGTH = 20;
 
 async function getUsers(include_password = false) {
   // retorna todos los produtos activos
@@ -19,13 +20,13 @@ async function getUsers(include_password = false) {
 }
 
 
-async function getUser(identifier) {
+async function getUser(identifier, include_password = false) {
   // retorna un usuario en particular
   // TODO: agregar mas formas de buscar usuarios(telefono)
   const validEmail = /^.+@.+\..+$/; // TODO: fix
   const email = validEmail.test(identifier) && identifier;
-  const users = await getUsers();
-  const user = users.find(u => email ? u.correo === email : u.name === identifier);
+  const users = await getUsers(include_password);
+  const user = users.find(u => email ? u.correo === email : u.nombre === identifier);
 
   return user;
 
@@ -34,14 +35,14 @@ async function getUser(identifier) {
 
 async function createUser(data) {
   // crear un usuario
-  let { correo, nombre, apellido, celular, dirección, contraseña } = data;
+  let { correo, nombre, apellido, celular, direccion, contraseña } = data;
 
   contraseña = await bcrypt.hash(contraseña, salt);
-  const newUser = await Usuario.create({ correo, nombre, apellido, celular, dirección, contraseña });
+  const newUser = await Usuario.create({ correo, nombre, apellido, celular, direccion, contraseña });
 
   if (!newUser) return;
 
-  return newUser.dataValues;
+  return { ...newUser.dataValues, contraseña: undefined, activo: undefined };
 
 }
 
@@ -61,7 +62,7 @@ async function updateUser(userId, data) {
     return { error: `No se pudo actualizar el usuario id:${userId}.` };
   }
 
-  return updated.dataValues;
+  return { ...updated.dataValues, contraseña: undefined, activo: undefined };
 
 }
 
@@ -87,7 +88,7 @@ async function deleteUser(userId) {
 
 function validateUser(data) {
   // validar / formatear datos
-  let { correo, nombre, apellido, celular, dirección, contraseña, activo } = data;
+  let { correo, nombre, apellido, celular, direccion, contraseña, activo } = data;
   nombre = String(nombre).replace(/\W/g, '');
   const errors = Object.keys({ ...data, nombre }).map(key => (data[key] === null || data[key] === undefined) && key).filter(e => e);
 
@@ -111,14 +112,6 @@ function validateUser(data) {
     return { error: `El apellido debe contener ${MAX_NAME_LENGTH} caracteres tener como maximo.` };
   }
 
-  if (presentacion.length > MAX_DESC_LENGTH) {
-    return { error: `La presentacion debe contener ${MAX_DESC_LENGTH} caracteres tener como maximo.` };
-  }
-
-  if (comentario.length > MAX_DESC_LENGTH) {
-    return { error: `El comentario debe contener ${MAX_DESC_LENGTH} caracteres tener como maximo.` };
-  }
-
   if (contraseña.length < 5) {
     return { error: 'La contraseña debe contener almenos 5 caracteres.' };
   }
@@ -127,7 +120,7 @@ function validateUser(data) {
     return { error: 'La contraseña debe contener almenos un digito.' };
   }
 
-  const out = { correo, nombre, apellido, celular, dirección, contraseña };
+  const out = { correo, nombre, apellido, celular, direccion, contraseña };
 
   return out;
 }

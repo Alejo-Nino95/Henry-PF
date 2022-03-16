@@ -18,7 +18,7 @@ async function getCategory(identifier) {
   identifier = Number(identifier) || identifier;
 
   const categories = await getCategories();
-  const category = categories.find(c => c.id === identifier || c.name === identifier);
+  const category = categories.find(c => c.id === identifier || c.nombre === identifier);
 
   return category;
 
