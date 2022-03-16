@@ -2,7 +2,7 @@ const { Categoria } = require('../db.js');
 
 
 async function getCategories() {
-  // retorna todos los produtos activos
+  // retorna todos las categorias activas
   const categories = await Categoria.findAll({
     where: { activo: true },
     attributes: { exclude: ['activo'] }
