@@ -3,11 +3,15 @@ const bcrypt = require('bcrypt');
 
 const salt = 10;
 
-async function getUsers() {
+async function getUsers(include_password = false) {
   // retorna todos los produtos activos
+  const exclude = ['activo'];
+
+  if (!include_password) exclude.push('contraseña');
+
   const users = await Usuario.findAll({
     where: { activo: true },
-    attributes: { exclude: ['activo', 'contraseña'] }
+    attributes: { exclude }
   });
 
   return users;
@@ -83,10 +87,9 @@ async function deleteUser(userId) {
 
 function validateUser(data) {
   // validar / formatear datos
-  let { correo, nombre, apellido, celular, dirección, contraseña } = data;
+  let { correo, nombre, apellido, celular, dirección, contraseña, activo } = data;
   nombre = String(nombre).replace(/\W/g, '');
   const errors = Object.keys({ ...data, nombre }).map(key => (data[key] === null || data[key] === undefined) && key).filter(e => e);
-  activo = activo ?? Boolean(activo);
 
   if (errors.length) {
     return { error: `Campo '${errors[0]}' no puede estar vacio.` };
