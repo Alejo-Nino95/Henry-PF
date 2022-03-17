@@ -16,18 +16,6 @@ module.exports = (sequelize) => {
             type: DataTypes.DECIMAL,
             allowNull: false,
         },
-        tipo_corte: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        presentacion: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        comentario: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         stock: {
             type: DataTypes.DECIMAL,
             allowNull: false,
