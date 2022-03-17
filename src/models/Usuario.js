@@ -4,8 +4,8 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   sequelize.define("Usuario", {
     correo: {
-      primaryKey: true,
       type: DataTypes.STRING,
+      primaryKey: true,
       allowNull: false,
     },
     nombre: {
