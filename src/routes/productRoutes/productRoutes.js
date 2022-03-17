@@ -11,7 +11,7 @@ const router = require('express').Router();;
 
 router.post('/create', async (req, res) => {
   
-  const { id_categoria, nombre, precio, presentacion, stock, fotos } = req.body;
+  const { categoria, nombre, precio, presentacion, stock, fotos } = req.body;
 
   const foundProduct = await getProduct(nombre);
 
@@ -25,13 +25,13 @@ router.post('/create', async (req, res) => {
     return res.status(400).send(parsed);
   }
 
-  const newProduct = await createProduct({ ...parsed, id_categoria });
+  const newProduct = await createProduct({ ...parsed, categoria });
 
   if (!newProduct) {
     return res.status(500).send({ error: 'No se pudo crear el producto.' });
   }
 
-  res.status(200).send({ data: { ...newProduct, activo: undefined } });
+  res.status(200).send({ data: { ...newProduct.dataValues, activo: undefined } });
 
 });
 
