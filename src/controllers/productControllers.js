@@ -1,5 +1,5 @@
-const { Producto } = require('../db.js');
-
+const { Producto, Categoria } = require('../db.js');
+const { getCategory } = require('./categoryControllers.js');
 
 const MAX_DESC_LENGTH = 500;
 const MAX_NAME_LENGTH = 20;
@@ -9,7 +9,11 @@ async function getProducts() {
   // retorna todos los produtos activos
   const products = await Producto.findAll({
     where: { activo: true },
-    attributes: { exclude: ['activo'] }
+    attributes: { exclude: ['activo'] },
+    include: {
+      model: Categoria,
+      attributes: ['id', 'nombre']
+    }
   });
 
   return products;
@@ -32,12 +36,17 @@ async function getProduct(identifier) {
 async function createProduct(data) {
   // crear un producto
   // se asume que los datos ya han sido validados
-  const { nombre, precio, tipo_corte, presentacion, comentario, stock, fotos } = data;
-  const newProduct = await Producto.create({ nombre, precio, tipo_corte, presentacion, comentario, stock, fotos });
+  const { categoria, nombre, precio, presentacion, stock, fotos } = data;
+  const newProduct = await Producto.create({ nombre, precio, presentacion, stock, fotos });
+  const category = await getCategory(categoria);
 
-  if (!newProduct) return;
+  if (!category) {
+    return { error: `Categoria con id ${categoria} no existe.` };
+  }
 
-  return newProduct.dataValues; // no retornar una instancia del modelo
+  await newProduct.addCategoria(category);
+
+  return newProduct; // retornar una instancia del modelo
 
 }
 
@@ -80,15 +89,13 @@ async function deleteProduct(productId) {
 }
         
 
-function validateProduct(nombre, precio, tipo_corte, presentacion, comentario, stock, activo) {
+function validateProduct(nombre, precio, presentacion, stock, fotos) {
   // validar / formatear datos
   nombre = String(nombre).replace(/\W/g, '');
-  const values = { nombre, precio, tipo_corte, presentacion, comentario, stock };
+  const values = { nombre, precio, presentacion, stock, fotos };
   const errors = Object.keys(values).map(key => (values[key] === null || values[key] === undefined) && key).filter(e => e);
   precio = Number(precio);
   stock = Number(stock);
-  activo = activo ?? Boolean(activo);
-
   if (errors.length) {
     return { error: `Campo '${errors[0]}' no puede estar vacio.` };
   }
@@ -109,11 +116,7 @@ function validateProduct(nombre, precio, tipo_corte, presentacion, comentario, s
     return { error: `La presentacion debe contener ${MAX_DESC_LENGTH} caracteres tener como maximo.` };
   }
 
-  if (comentario.length > MAX_DESC_LENGTH) {
-    return { error: `El comentario debe contener ${MAX_DESC_LENGTH} caracteres tener como maximo.` };
-  }
-
-  const out = { nombre, precio, tipo_corte, presentacion, comentario, stock };
+  const out = { nombre, precio, presentacion, stock, fotos };
 
   return out;
 }

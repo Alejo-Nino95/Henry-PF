@@ -35,16 +35,16 @@ const { Producto, Usuario, Categoria, ItemsPedido, Reviews, Pedidos } = sequeliz
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 Producto.hasMany(Categoria);
-Categoria.belongsToMany(Producto, { through: 'categorias' });
+Categoria.belongsToMany(Producto, { through: 'categoria' });
 
 Producto.hasMany(Reviews);
 Reviews.belongsToMany(Producto, { through: 'reviews' });
 
-Pedidos.belongsToMany(ItemsPedido, { through: 'Pedidos_items'})
-ItemsPedido.belongsToMany(Pedidos, { through: 'Pedidos_items'})
+Pedidos.belongsToMany(ItemsPedido, { through: 'Pedidos_items' });
+ItemsPedido.belongsToMany(Pedidos, { through: 'Pedidos_items' });
 
-Pedidos.belongsToMany(Usuario, { through: 'Pedidos_Usuarios'})
-Usuario.belongsToMany(Pedidos, { through: 'Pedidos_Usuarios'})
+Pedidos.belongsToMany(Usuario, { through: 'Pedidos_Usuarios' });
+Usuario.belongsToMany(Pedidos, { through: 'Pedidos_Usuarios' });
 
 // Producto.hasMany(ItemsPedido);
 // ItemsPedido.belongsTo(Producto);

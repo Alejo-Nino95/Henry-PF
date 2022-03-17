@@ -11,7 +11,7 @@ const router = require('express').Router();;
 
 router.post('/create', async (req, res) => {
   
-  const { nombre, precio, tipo_corte, presentacion, comentario, stock } = req.body;
+  const { id_categoria, nombre, precio, presentacion, stock, fotos } = req.body;
 
   const foundProduct = await getProduct(nombre);
 
@@ -19,19 +19,19 @@ router.post('/create', async (req, res) => {
     return res.status(400).send({ error: `Producto con nombre ${nombre} ya existe.` });
   }
 
-  const parsed = validateProduct(nombre, precio, tipo_corte, presentacion, comentario, stock);
+  const parsed = validateProduct(nombre, precio, presentacion, stock, fotos);
 
   if (parsed.error) {
     return res.status(400).send(parsed);
   }
 
-  const newProduct = await createProduct(parsed);
+  const newProduct = await createProduct({ ...parsed, id_categoria });
 
   if (!newProduct) {
     return res.status(500).send({ error: 'No se pudo crear el producto.' });
   }
 
-  res.status(200).send({ newProduct });
+  res.status(200).send({ data: { ...newProduct, activo: undefined } });
 
 });
 
@@ -62,7 +62,7 @@ router.get('/get/:productId', async (req, res) => {
 
 router.put('/update/:productId', async (req, res) => {
   
-  const { nombre, precio, tipo_corte, presentacion, comentario, stock } = req.body;
+  const { nombre, precio, presentacion, stock, fotos } = req.body;
   const { productId } = req.params;
 
   const foundProduct = await getProduct(productId);
@@ -71,7 +71,7 @@ router.put('/update/:productId', async (req, res) => {
     return res.status(404).send({ error: `Producto con id:${productId} no existe.` });
   }
 
-  const parsed = validateProduct({ nombre, precio, tipo_corte, presentacion, comentario, stock });
+  const parsed = validateProduct({ nombre, precio, presentacion, stock, fotos });
 
   if (parsed.error) {
     return res.status(400).send(parsed);
