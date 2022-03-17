@@ -32,8 +32,8 @@ async function getProduct(identifier) {
 async function createProduct(data) {
   // crear un producto
   // se asume que los datos ya han sido validados
-  const { nombre, precio, tipo_corte, presentacion, comentario, stock } = data;
-  const newProduct = await Producto.create({ nombre, precio, tipo_corte, presentacion, comentario, stock });
+  const { nombre, precio, tipo_corte, presentacion, comentario, stock, fotos } = data;
+  const newProduct = await Producto.create({ nombre, precio, tipo_corte, presentacion, comentario, stock, fotos });
 
   if (!newProduct) return;
 
