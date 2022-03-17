@@ -2,22 +2,27 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     // defino el modelo
-    sequelize.define('ItemsPedido', {
+    sequelize.define('Pedidos', {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
         },
-        descripcion: {
+        direccion_despacho: {
             type: DataTypes.STRING,
-        },
-        precio: {
-            type: DataTypes.DECIMAL,
             allowNull: false,
         },
-        cantidad: {
-            type: DataTypes.DECIMAL,
+        status: {
+            type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        f_pedido: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+        f_entrega: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
     });
 };
