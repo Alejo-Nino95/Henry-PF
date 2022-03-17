@@ -5,6 +5,7 @@ const router = require('express').Router();
 const userRoutes = require('./userRoutes/userRoutes.js');
 const productRoutes = require('./productRoutes/productRoutes.js');
 const categoryRoutes = require('./categoryRoutes/categoryRoutes.js');
+const pedidosRoutes = require('./pedidosRoutes/pedidosRoutes.js');
 
 
 // Configurar los routers
@@ -12,6 +13,7 @@ const categoryRoutes = require('./categoryRoutes/categoryRoutes.js');
 router.use('/user', userRoutes);
 router.use('/product', productRoutes);
 router.use('/category', categoryRoutes);
+router.use('/pedidos', pedidosRoutes);
 
 
 module.exports = router;

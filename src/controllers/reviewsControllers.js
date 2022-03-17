@@ -1,22 +1,19 @@
-const { Reviews } = require('../db.js');
+const { Reviews, Producto } = require('../db.js');
 
-async function getPedidos() {
-  // retorna todos los pedidos
-  const pedidos = await Pedidos.findAll({
-    include: [
-        {model: Usuarios, attributes: ["nombre","apellido","direccion"]},
-        {model: ItemsPedido, attributes: ["descripcion","precio","cantidad"]}
-    ]
+async function getReviews() {
+  // retorna todos los Reseñas de un Producto por cada items de pedidos
+  const reviews = await Reviews.findAll({
+    include: {model: Producto, attributes: ["nombre","tipo_corte","presentacion"]},
   });
 
-  return pedidos;
+  return reviews;
 }
 
 
-async function getPedido(identifier) {
-  // retorna un pedido en particular
-  const pedido = await Pedidos.findByPk(identifier);
-  return pedido; // retornar la instancia del modelo
+async function getReview(identifier) {
+  // retorna una reseña en particular
+  const review = await Reviews.findByPk(identifier, {include: {model: Producto, attributes: ["nombre","tipo_corte","presentacion"]}});
+  return ; // retornar la instancia del modelo
 }
 
 
