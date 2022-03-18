@@ -38,13 +38,26 @@ Producto.hasMany(Categoria);
 Categoria.belongsToMany(Producto, { through: 'categoria' });
 
 Producto.hasMany(Reviews);
-Reviews.belongsToMany(Producto, { through: 'reviews' });
+Reviews.belongsTo(Producto); //, { through: 'reviews' });
 
 Pedidos.belongsToMany(ItemsPedido, { through: 'Pedidos_items' });
 ItemsPedido.belongsToMany(Pedidos, { through: 'Pedidos_items' });
 
 Pedidos.belongsToMany(Usuario, { through: 'Pedidos_Usuarios' });
 Usuario.belongsToMany(Pedidos, { through: 'Pedidos_Usuarios' });
+
+Pedidos.hasMany(ItemsPedido);
+ItemsPedido.belongsTo(Pedidos); //,{foreignKey: 'pedidosId'}); //, { through: 'Pedidos_items'})
+
+Producto.hasMany(ItemsPedido)
+ItemsPedido.belongsTo(Producto)
+
+// Producto.hasOne(ItemsPedido);
+
+
+Pedidos.belongsToMany(ItemsPedido, { through: 'Pedidos_items' });
+ItemsPedido.belongsToMany(Pedidos, { through: 'Pedidos_items' });
+
 
 // Producto.hasMany(ItemsPedido);
 // ItemsPedido.belongsTo(Producto);
