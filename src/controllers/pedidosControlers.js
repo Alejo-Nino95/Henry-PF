@@ -16,13 +16,8 @@ async function getPedido(identifier) {
   // retorna un pedido en particular
   const pedido = await Pedidos.findByPk(identifier, {
     include: [
-<<<<<<< HEAD
-        {model: Usuarios, attributes: ["nombre","apellido","direccion"]},
-        {model: ItemsPedido, attributes: ["descripcion","precio","cantidad"]}
-=======
       {model: Usuarios, attributes: ["nombre","apellido","direccion"]},
       {model: ItemsPedido, attributes: ["descripcion","precio","cantidad"]}
->>>>>>> c6058ebd75224d245773b70344bdcd094508fc5a
     ]
   });
   return pedido; // retornar la instancia del modelo
@@ -32,7 +27,6 @@ async function getPedido(identifier) {
 async function createPedido(data) {
   // crear un pedido
   // se asume que los datos ya han sido validados
-<<<<<<< HEAD
   const { direccion_despacho, status, f_pedido, f_entrega, correo } = data;  
   let listItems = [];
   let listReseñas = [];
@@ -56,12 +50,10 @@ async function createPedido(data) {
 
   const items_prueba = await ItemsPedido.findOne({where: {descripcion: listItems[0].descripcion}})
   await items_prueba.setProducto(listItems[0].Producto_Id)
-=======
-  const { direccion_despacho, status, f_pedido, f_entrega,  } = data;  
-  const newPedido = await Pedidos.create({ direccion_despacho, status, f_pedido, f_entrega });
+
   if (!newPedido) return;
+  
   return newPedido.dataValues; // no retornar una instancia del modelo
->>>>>>> c6058ebd75224d245773b70344bdcd094508fc5a
 
 
   // if (!newPedido) return;
@@ -151,12 +143,7 @@ function validatePedido(data) {
     texto+= '\nLa fecha y/o hora de entrega no puede ser menor que la fecha y/o hora del pedido'
   }
 
-<<<<<<< HEAD
-
   if (texto !== '') return {error: 'Error(es): \n' + texto}
-=======
-  if (texto !== '') return {error:'Error(es): \n' + texto}
->>>>>>> c6058ebd75224d245773b70344bdcd094508fc5a
   
   const out = data //{ direccion_despacho, status, f_pedido, f_entrega };
 

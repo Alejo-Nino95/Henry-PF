@@ -5,12 +5,7 @@ const router = require('express').Router();
 const userRoutes = require('./userRoutes/userRoutes.js');
 const productRoutes = require('./productRoutes/productRoutes.js');
 const categoryRoutes = require('./categoryRoutes/categoryRoutes.js');
-<<<<<<< HEAD
 const pedidosRoutes = require('./pedidosRoutes/pedidosRoutes.js')
-=======
-const pedidosRoutes = require('./pedidosRoutes/pedidosRoutes.js');
-
->>>>>>> c6058ebd75224d245773b70344bdcd094508fc5a
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
