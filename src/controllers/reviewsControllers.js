@@ -22,12 +22,24 @@ async function createReview(data) {
   const newResena = await Reviews.create({ resena, evaluacion });
   if (!newResena) return;
   return newResena.dataValues; // no retornar una instancia del modelo
-
 }
 
+function validateReview(data) {
+  // validar / formatear datos
+  let { resena, evaluacion } = data;
+
+  if (!resena.length) {
+    return { error: 'Reseña no puede estar vacia.' };
+  }
+
+  const out = { resena, evaluacion };
+
+  return out;
+}
 
 module.exports = {
   getReviews,
   getReview,
-  createReview
+  createReview,
+  validateReview
 };
