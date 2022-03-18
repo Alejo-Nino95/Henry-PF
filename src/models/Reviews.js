@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
             allowNull: false,
             // autoIncrement: true,
         },
-        reseña: {
+        resena: {
             type: DataTypes.STRING,
             allowNull:false,
         },
