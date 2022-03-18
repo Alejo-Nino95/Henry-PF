@@ -842,7 +842,22 @@ const data = {
         "http://www.opencare.com//product/797a1914-1cb7-4bea-b98c-a46be43ebf0f.raw"
       ]
     }
-  ]
-};
+  ],
+    // pedidos: [
+    //   {
+    //     direccion: "West Avenue 330, St. Louis",
+    //     status: "Proceso",
+    //     f_pedido: new Date(),
+    //     f_entrega: new Date(f_pedido.getMonth() + '/' + (f_pedido.getDate() + 1) + '/' +f_pedido.getFullYear()),
+    //   },
+    //   {
+    //     direccion: "Maple Street 467, Lexington-Fayette",
+    //     status: "Proceso",
+    //     f_pedido: new Date(),
+    //     f_entrega: new Date(f_pedido.getMonth() + '/' + (f_pedido.getDate() + 1) + '/' +f_pedido.getFullYear()),
+    //   },
+
+    // ],
+  };
 
 module.exports = data;
