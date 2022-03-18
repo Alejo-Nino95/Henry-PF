@@ -86,8 +86,8 @@ router.put('/update/:userId', async (req, res) => {
 
   const updated = await updateUser(userId, parsed);
 
-  if (!updated) {
-    return res.status(400).send({ error: 'No se pudo actualizar los datos del usuario' });
+  if (updated.error) {
+    return res.status(500).send(updated);
   }
 
   res.status(200).send({ mensaje: 'Usuario actualizado' });

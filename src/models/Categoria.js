@@ -12,11 +12,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // foto de portada
-    foto: {
-      type: DataTypes.STRING,
-      defaultValue: 'https://i.imgur.com/AxOZPkU.png'
-    },
     // no borrar datos de la DB, solo desactivarlos
     // Categoria.findAll({where: {activo: true}, attributes: {exclude:['activo']}})
     activo: {

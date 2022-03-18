@@ -79,19 +79,19 @@ async function deleteCategory(categoryId) {
 
 function validateCategory(data) {
   // validar / formatear datos
-  let { nombre, foto } = data;
+  let { nombre } = data;
   nombre = String(nombre).replace(/\W/g, '');
-  const errors = Object.keys({ ...data, nombre }).map(key => (data[key] === null || data[key] === undefined) && key).filter(e => e);
+  const errors = Object.keys(data).map(key => (data[key] === null || data[key] === undefined) && key).filter(e => e);
 
   if (errors.length) {
     return { error: `Campo '${errors[0]}' no puede estar vacio.` };
   }
 
-  if (!/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(foto)) {
-    return { error: 'Link de foto invalido' };
-  }
+  // if (!/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(foto)) {
+  //   return { error: 'Link de foto invalido' };
+  // }
 
-  const out = { nombre, foto };
+  const out = { nombre };
 
   return out;
 }

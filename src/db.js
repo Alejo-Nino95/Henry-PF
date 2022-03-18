@@ -35,11 +35,12 @@ const { Producto, Usuario, Categoria, ItemsPedido, Reviews, Pedidos } = sequeliz
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 Producto.hasMany(Categoria);
-Categoria.belongsToMany(Producto, { through: 'categorias' });
+Categoria.belongsToMany(Producto, { through: 'categoria' });
 
 Producto.hasMany(Reviews);
 Reviews.belongsTo(Producto); //, { through: 'reviews' });
 
+<<<<<<< HEAD
 Pedidos.hasMany(ItemsPedido);
 ItemsPedido.belongsTo(Pedidos); //,{foreignKey: 'pedidosId'}); //, { through: 'Pedidos_items'})
 
@@ -47,9 +48,13 @@ Producto.hasMany(ItemsPedido)
 ItemsPedido.belongsTo(Producto)
 
 // Producto.hasOne(ItemsPedido);
+=======
+Pedidos.belongsToMany(ItemsPedido, { through: 'Pedidos_items' });
+ItemsPedido.belongsToMany(Pedidos, { through: 'Pedidos_items' });
+>>>>>>> c6058ebd75224d245773b70344bdcd094508fc5a
 
-Pedidos.belongsToMany(Usuario, { through: 'Pedidos_Usuarios'})
-Usuario.belongsToMany(Pedidos, { through: 'Pedidos_Usuarios'})
+Pedidos.belongsToMany(Usuario, { through: 'Pedidos_Usuarios' });
+Usuario.belongsToMany(Pedidos, { through: 'Pedidos_Usuarios' });
 
 // Producto.hasMany(ItemsPedido);
 // ItemsPedido.belongsTo(Producto);

@@ -1,110 +1,57 @@
-const { Reviews } = require('../db.js');
+const { Reviews, Producto } = require('../db.js');
 
-async function getPedidos() {
-  // retorna todos los pedidos
-  const pedidos = await Pedidos.findAll({
-    include: [
-        {model: Usuarios, attributes: ["nombre","apellido","direccion"]},
-        {model: ItemsPedido, attributes: ["descripcion","precio","cantidad"]}
-    ]
+async function getReviews() {
+  // retorna todos las reseñas
+  const reviews = await Reviews.findAll({
+    include: {model: Producto, attributes: ["nombre","tipo_corte","presentacion"]},
   });
 
-  return pedidos;
+  return reviews;
 }
 
+async function getReviewsByProduct(identifier) {
+  // retorna todos los Reseñas de un Producto por cada items de pedidos
+  const reviews = await Reviews.findAll({
+    where: {
+      productoid: identifier
+    },
+    include: {model: Producto, attributes: ["nombre","tipo_corte","presentacion"]},
+  });
 
-async function getPedido(identifier) {
-  // retorna un pedido en particular
-  const pedido = await Pedidos.findByPk(identifier);
-  return pedido; // retornar la instancia del modelo
+  return reviews;
 }
 
-
-async function createPedido(data) {
-  // crear un pedido
-  // se asume que los datos ya han sido validados
-  const { direccion_despacho, status, f_pedido, f_entrega } = data;  
-  const newPedido = await Pedidos.create({ direccion_despacho, status, f_pedido, f_entrega });
-  if (!newPedido) return;
-  return newPedido.dataValues; // no retornar una instancia del modelo
-
+async function getReview(identifier) {
+  // retorna una reseña en particular
+  const review = await Reviews.findByPk(identifier, {include: {model: Producto, attributes: ["nombre","tipo_corte","presentacion"]}});
+  return review; // retornar la instancia del modelo
 }
 
-
-async function updatePedido(pedidoId, data) {
-  // actualizar datos de un pedido
-  const pedido = await getPedido(pedidoId);
-
-  if (!pedido) {
-    return { error: `Pedido con id:${pedidoId} no existe.` };
-  }
-
-  const updated = await pedido.update(data);
-
-  if (!updated) {
-    return { error: `No se pudo actualizar el pedido id:${pedidoId}.` };
-  }
-
-  return updated.dataValues;
-
+async function createReview(data) {
+  // crear una reseña
+  const { resena, evaluacion } = data;  
+  const newResena = await Reviews.create({ resena, evaluacion });
+  if (!newResena) return;
+  return newResena.dataValues; // no retornar una instancia del modelo
 }
 
-
-async function deletePedido(pedidoId) {
-  // borrar (desactivar) un pedido de la base de datos
-  const pedido = await getPedido(pedidoId);
-
-  if (!pedido) {
-    return { error: `Pedido con id:${pedidoId} no existe.` };
-  }
-
-  const deleted = await Pedidos.destroy({ where: {id: pedidoId}}); // cambiar a inactivo
-
-  if (!deleted) {
-    return { error: `No se pudo borrar el pedido id:${pedidoId}.` };
-  }
-
-  return true;
-
-}
-        
-
-function validatePedido(direccion_despacho, status, f_pedido, f_entrega) {
+function validateReview(data) {
   // validar / formatear datos
-  direccion_despacho = String(direccion_despacho).replace(/\W/g, '');
-  const values = { direccion_despacho, status, f_pedido, f_entrega };
-  const errors = Object.keys(values).map(key => (values[key] === null || values[key] === undefined) && key).filter(e => e);
-  let texto = '';
-  if (errors.length) {
-    errors.forEach(e => texto = ', ' + e + texto) 
-    texto = errors.length > 1 ? 'Los campos ': 'El campo ' + texto.slice(2) + 'no ' + errors.length > 1 ? 'pueden estar vacios': 'puede estar vacio.';
+  let { resena, evaluacion } = data;
+
+  if (!resena.length) {
+    return { error: 'Reseña no puede estar vacia.' };
   }
 
-  if (isNaN(Date.parse(f_pedido))) {
-    texto+= '\nLa fecha de pedido no es una fecha vádida'
-  }
-
-  if (isNaN(Date.parse(f_entrega))) {
-    texto+= '\nLa fecha de entrega no es una fecha vádida'
-  }
-
-  if (f_pedido > f_entrega) {
-    texto+= '\nLa fecha y/o hora de entrega no puede ser menor que la fecha y/o hora del pedido'
-  }
-
-  if (texto !== '') return 'Error(es): \n' + texto
-  
-  const out = { direccion_despacho, status, f_pedido, f_entrega };
+  const out = { resena, evaluacion };
 
   return out;
 }
 
-
 module.exports = {
-  getPedidos,
-  getPedido,
-  createPedido,
-  updatePedido,
-  deletePedido,
-  validatePedido
+  getReviews,
+  getReviewsByProduct,
+  getReview,
+  createReview,
+  validateReview
 };

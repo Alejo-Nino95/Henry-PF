@@ -12,12 +12,18 @@ const router = require('express').Router();
 
 
 router.post('/create', async (req, res) => {
+<<<<<<< HEAD
   
   const datachecked = validatePedido(req.body);
   if (datachecked.error) return res.status(500).send(datachecked)
   const newPedido = await createPedido(req.body)
   if (!newPedido) return res.status(500).send('Ocurrio un error al intentar crear el pedido. Pedido no generado')
   res.status(200).send(req.body);
+=======
+  // const {}
+
+  res.status(200).send({ message: "ruta para crear pedidos" });
+>>>>>>> c6058ebd75224d245773b70344bdcd094508fc5a
 });
 
 router.get('/all', async (req, res, next) => {
