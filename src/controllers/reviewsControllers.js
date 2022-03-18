@@ -1,7 +1,7 @@
 const { Reviews, Producto } = require('../db.js');
 
 async function getReviews() {
-  // retorna todos los Reseñas de un Producto por cada items de pedidos
+  // retorna todos las reseñas
   const reviews = await Reviews.findAll({
     include: {model: Producto, attributes: ["nombre","tipo_corte","presentacion"]},
   });
@@ -9,6 +9,17 @@ async function getReviews() {
   return reviews;
 }
 
+async function getReviewsByProduct(identifier) {
+  // retorna todos los Reseñas de un Producto por cada items de pedidos
+  const reviews = await Reviews.findAll({
+    where: {
+      productoid: identifier
+    },
+    include: {model: Producto, attributes: ["nombre","tipo_corte","presentacion"]},
+  });
+
+  return reviews;
+}
 
 async function getReview(identifier) {
   // retorna una reseña en particular
@@ -39,6 +50,7 @@ function validateReview(data) {
 
 module.exports = {
   getReviews,
+  getReviewsByProduct,
   getReview,
   createReview,
   validateReview

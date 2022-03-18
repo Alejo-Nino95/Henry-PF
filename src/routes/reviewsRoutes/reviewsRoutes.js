@@ -1,5 +1,6 @@
 const { 
     getReviews,
+    getReviewsByProduct,
     getReview, 
     createReview,
     validateReview } = require('../../controllers/reviewsControllers');
@@ -24,6 +25,20 @@ const {
   router.get('/all', async (req, res) => {
   
     const reviews = await getReviews();
+  
+    res.status(200).send(reviews);
+  
+  });
+
+  router.get('/get/:productId', async (req, res) => {
+  
+    const { productId } = req.params;
+  
+    const reviews = await getReviewsByProduct(productId);
+  
+    if (!reviews) {
+      return res.status(404).send({ error: `No existen reseñas para el porducto con id:${productId}` });
+    }
   
     res.status(200).send(reviews);
   
