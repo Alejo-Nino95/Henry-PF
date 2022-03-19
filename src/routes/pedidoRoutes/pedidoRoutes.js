@@ -6,7 +6,7 @@ const {
   updatePedido,
   deletePedido,
   validatePedido 
-} = require('../../controllers/pedidosControlers');
+} = require('../../controllers/pedidoControlers');
   
 const router = require('express').Router();
 
@@ -14,9 +14,9 @@ const router = require('express').Router();
 router.post('/create', async (req, res) => {
 
   const datachecked = validatePedido(req.body);
-  if (datachecked.error) return res.status(500).send(datachecked)
-  const newPedido = await createPedido(req.body)
-  if (!newPedido) return res.status(500).send('Ocurrio un error al intentar crear el pedido. Pedido no generado')
+  if (datachecked.error) return res.status(500).send(datachecked);
+  const newPedido = await createPedido(req.body);
+  if (!newPedido) return res.status(500).send('Ocurrio un error al intentar crear el pedido. Pedido no generado');
   res.status(200).send(req.body);
 });
 

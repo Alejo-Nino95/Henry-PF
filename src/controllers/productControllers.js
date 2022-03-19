@@ -25,7 +25,7 @@ async function getProducts(onlyValues = false) {
   if (onlyValues) {
     const parsed = products.map(product => ({
       ...product.dataValues,
-      rating: (product.dataValues.Reviews.reduce((a, b) => (a.evaluacion + b.evaluacion), 0) / product.dataValues.Reviews.length) || 0
+      rating: Number((product.dataValues.Reviews.map(e => e.evaluacion).reduce((a, b) => a + b, 0) / product.dataValues.Reviews.length).toFixed(1)) || 0
     }));
     return parsed;
   }
