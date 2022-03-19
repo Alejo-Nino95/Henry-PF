@@ -133,6 +133,7 @@ const data = {
       ]
     },
     {
+      id: '5c11c239-f86a-4757-884b-e1dfdd62fd0f',
       nombre: "carne de res",
       precio: 130543,
       presentacion: "kg",
@@ -145,6 +146,7 @@ const data = {
       ]
     },
     {
+      id: 'd0a36859-b926-4f3f-a568-00d6ddbca472',
       nombre: "carne de pavo",
       precio: 100107,
       presentacion: "kg",
@@ -157,6 +159,7 @@ const data = {
       ]
     },
     {
+      id: '8f4a7378-593d-48d6-a5b5-3a04674abdf3',
       nombre: "carne de cerdo",
       precio: 129296,
       presentacion: "kg",

@@ -40,27 +40,19 @@ Categoria.belongsToMany(Producto, { through: 'categoria' });
 Producto.hasMany(Reviews);
 Reviews.belongsTo(Producto); //, { through: 'reviews' });
 
-Pedidos.belongsToMany(ItemsPedido, { through: 'Pedidos_items' });
-ItemsPedido.belongsToMany(Pedidos, { through: 'Pedidos_items' });
-
-Pedidos.belongsToMany(Usuario, { through: 'Pedidos_Usuarios' });
-Usuario.belongsToMany(Pedidos, { through: 'Pedidos_Usuarios' });
-
-Pedidos.hasMany(ItemsPedido);
-ItemsPedido.belongsTo(Pedidos); //,{foreignKey: 'pedidosId'}); //, { through: 'Pedidos_items'})
+// Usuario.hasMany(Pedidos) //, { through: 'Pedidos_Usuarios' });
+// Pedidos.belongsTo(Usuario) //, { through: 'Pedidos_Usuarios' });
 
 Producto.hasMany(ItemsPedido)
 ItemsPedido.belongsTo(Producto)
 
 // Producto.hasOne(ItemsPedido);
 
-
-Pedidos.belongsToMany(ItemsPedido, { through: 'Pedidos_items' });
-ItemsPedido.belongsToMany(Pedidos, { through: 'Pedidos_items' });
-
-
 // Producto.hasMany(ItemsPedido);
 // ItemsPedido.belongsTo(Producto);
+
+Pedidos.hasMany(ItemsPedido) //, { through: 'Pedidos_items' });
+ItemsPedido.belongsTo(Pedidos) // { through: 'Pedidos_items' });
 
 //Pedido.hasOne(Reviews); descomentar cuando sea creado el modelo pedidos
 //Reviews.belongsTo(Pedido);

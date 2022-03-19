@@ -24,5 +24,9 @@ module.exports = (sequelize) => {
             type: DataTypes.DATE,
             allowNull: false,
         },
+        correo: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
     });
 };
