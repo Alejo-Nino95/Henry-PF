@@ -38,7 +38,7 @@ router.post('/create', async (req, res) => {
 
 router.get('/all', async (req, res) => {
   
-  const products = await getProducts();
+  const products = await getProducts(true);
 
   res.status(200).send(products);
 
@@ -49,7 +49,7 @@ router.get('/get/:productId', async (req, res) => {
   
   const { productId } = req.params;
 
-  const foundProduct = await getProduct(productId);
+  const foundProduct = await getProduct(productId, true);
 
   if (!foundProduct) {
     return res.status(404).send({ error: `Producto con id:${productId} no existe.` });

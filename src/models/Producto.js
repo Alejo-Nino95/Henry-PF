@@ -20,10 +20,6 @@ module.exports = (sequelize) => {
             type: DataTypes.DECIMAL,
             allowNull: false,
         },
-        presentacion: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         stock: {
             type: DataTypes.DECIMAL,
             allowNull: false,
