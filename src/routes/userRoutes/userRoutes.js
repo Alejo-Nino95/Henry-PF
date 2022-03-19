@@ -5,9 +5,22 @@ const {
   updateUser,
   createUser,
   deleteUser,
-  validateUser } = require('../../controllers/userControllers.js');
+  validateUser,
+  registerEmail } = require('../../controllers/userControllers.js');
 const router = require('express').Router();;
 
+router.post('/register', async (req, res) => {
+  try {
+    const tryToRegisterEmail = await registerEmail(req.body.email.trim())    
+    if (tryToRegisterEmail.done) {      
+      return res.json(tryToRegisterEmail)
+    } else {
+      return res.status(400).json(tryToRegisterEmail)
+    }
+  } catch (error) {
+    return { done:false, type:'error', data:error }
+  }
+})
 
 router.post('/create', async (req, res) => {
 
