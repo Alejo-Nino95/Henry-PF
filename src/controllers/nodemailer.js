@@ -75,10 +75,10 @@ async function send(
 async function sendEmail(emailTo, emailSubject, emailHtml, attachments) {
   try {
     const sending = await send(emailTo, emailSubject, emailHtml, attachments);
-    return { done: true, data: sending };
+    return { done: true, type:'info', data: sending };
   } catch (error) {
     console.log(error);
-    return { done: false, data: error };
+    return { done: false, type:'error', data: error };
   }
 }
 
