@@ -40,6 +40,9 @@ Categoria.belongsToMany(Producto, { through: 'categoria' });
 Producto.hasMany(Review);
 Review.belongsTo(Producto); //, { through: 'reviews' });
 
+Usuario.hasMany(Review);
+Review.belongsTo(Usuario);
+
 Usuario.hasMany(Pedido); //, { through: 'Pedidos_Usuarios' });
 Pedido.belongsTo(Usuario); //, { through: 'Pedidos_Usuarios' });
 
