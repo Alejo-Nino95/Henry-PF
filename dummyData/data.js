@@ -99,7 +99,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 108755,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 5980,
       fotos: [
@@ -112,7 +111,6 @@ const data = {
     {
       nombre: "carne de cordero",
       precio: 104642,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de cordero'",
       stock: 8326,
       fotos: [
@@ -125,7 +123,6 @@ const data = {
     {
       nombre: "carne de cerdo",
       precio: 133745,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de cerdo'",
       stock: 8374,
       fotos: [
@@ -136,10 +133,8 @@ const data = {
       ]
     },
     {
-      id: '5c11c239-f86a-4757-884b-e1dfdd62fd0f',
       nombre: "carne de res",
       precio: 130543,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de res'",
       stock: 8013,
       fotos: [
@@ -150,10 +145,8 @@ const data = {
       ]
     },
     {
-      id: 'd0a36859-b926-4f3f-a568-00d6ddbca472',
       nombre: "carne de pavo",
       precio: 100107,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pavo'",
       stock: 8495,
       fotos: [
@@ -164,10 +157,8 @@ const data = {
       ]
     },
     {
-      id: '8f4a7378-593d-48d6-a5b5-3a04674abdf3',
       nombre: "carne de cerdo",
       precio: 129296,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de cerdo'",
       stock: 8736,
       fotos: [
@@ -180,7 +171,6 @@ const data = {
     {
       nombre: "carne de venado",
       precio: 106997,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de venado'",
       stock: 5667,
       fotos: [
@@ -193,7 +183,6 @@ const data = {
     {
       nombre: "carne de cordero",
       precio: 123438,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de cordero'",
       stock: 9430,
       fotos: [
@@ -206,7 +195,6 @@ const data = {
     {
       nombre: "carne de pato",
       precio: 116725,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pato'",
       stock: 5381,
       fotos: [
@@ -219,7 +207,6 @@ const data = {
     {
       nombre: "carne de res",
       precio: 105633,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de res'",
       stock: 5448,
       fotos: [
@@ -232,7 +219,6 @@ const data = {
     {
       nombre: "carne de venado",
       precio: 107448,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de venado'",
       stock: 6473,
       fotos: [
@@ -245,7 +231,6 @@ const data = {
     {
       nombre: "carne de res",
       precio: 123079,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de res'",
       stock: 5471,
       fotos: [
@@ -258,7 +243,6 @@ const data = {
     {
       nombre: "carne de res",
       precio: 126003,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de res'",
       stock: 5429,
       fotos: [
@@ -271,7 +255,6 @@ const data = {
     {
       nombre: "carne de pavo",
       precio: 105698,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pavo'",
       stock: 6276,
       fotos: [
@@ -284,7 +267,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 133149,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 8690,
       fotos: [
@@ -297,7 +279,6 @@ const data = {
     {
       nombre: "carne de res",
       precio: 126301,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de res'",
       stock: 6526,
       fotos: [
@@ -310,7 +291,6 @@ const data = {
     {
       nombre: "carne de cerdo",
       precio: 133734,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de cerdo'",
       stock: 6093,
       fotos: [
@@ -323,7 +303,6 @@ const data = {
     {
       nombre: "carne de res",
       precio: 114260,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de res'",
       stock: 9038,
       fotos: [
@@ -336,7 +315,6 @@ const data = {
     {
       nombre: "carne de pato",
       precio: 104114,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pato'",
       stock: 8149,
       fotos: [
@@ -349,7 +327,6 @@ const data = {
     {
       nombre: "carne de res",
       precio: 116712,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de res'",
       stock: 6760,
       fotos: [
@@ -362,7 +339,6 @@ const data = {
     {
       nombre: "carne de cerdo",
       precio: 122702,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de cerdo'",
       stock: 6395,
       fotos: [
@@ -375,7 +351,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 112047,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 8259,
       fotos: [
@@ -388,7 +363,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 129660,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 9199,
       fotos: [
@@ -401,7 +375,6 @@ const data = {
     {
       nombre: "carne de res",
       precio: 128516,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de res'",
       stock: 5629,
       fotos: [
@@ -414,7 +387,6 @@ const data = {
     {
       nombre: "carne de cordero",
       precio: 124874,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de cordero'",
       stock: 7371,
       fotos: [
@@ -427,7 +399,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 126399,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 6382,
       fotos: [
@@ -440,7 +411,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 127673,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 6622,
       fotos: [
@@ -453,7 +423,6 @@ const data = {
     {
       nombre: "carne de pavo",
       precio: 113531,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pavo'",
       stock: 6271,
       fotos: [
@@ -466,7 +435,6 @@ const data = {
     {
       nombre: "carne de venado",
       precio: 108978,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de venado'",
       stock: 5628,
       fotos: [
@@ -479,7 +447,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 99718,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 9153,
       fotos: [
@@ -492,7 +459,6 @@ const data = {
     {
       nombre: "carne de venado",
       precio: 113594,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de venado'",
       stock: 8907,
       fotos: [
@@ -505,7 +471,6 @@ const data = {
     {
       nombre: "carne de pavo",
       precio: 124640,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pavo'",
       stock: 5342,
       fotos: [
@@ -518,7 +483,6 @@ const data = {
     {
       nombre: "carne de cordero",
       precio: 100777,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de cordero'",
       stock: 6681,
       fotos: [
@@ -531,7 +495,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 106845,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 5455,
       fotos: [
@@ -544,7 +507,6 @@ const data = {
     {
       nombre: "carne de pato",
       precio: 127385,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pato'",
       stock: 8817,
       fotos: [
@@ -557,7 +519,6 @@ const data = {
     {
       nombre: "carne de venado",
       precio: 111603,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de venado'",
       stock: 8645,
       fotos: [
@@ -570,7 +531,6 @@ const data = {
     {
       nombre: "carne de venado",
       precio: 131908,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de venado'",
       stock: 6789,
       fotos: [
@@ -583,7 +543,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 103240,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 7999,
       fotos: [
@@ -596,7 +555,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 100623,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 9098,
       fotos: [
@@ -609,7 +567,6 @@ const data = {
     {
       nombre: "carne de pollo",
       precio: 133921,
-      presentacion: "kg",
       descripcion: "descripcion de 'carne de pollo'",
       stock: 7065,
       fotos: [

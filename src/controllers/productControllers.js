@@ -5,7 +5,7 @@ const MAX_DESC_LENGTH = 100;
 const MAX_NAME_LENGTH = 20;
 
 
-async function getProducts() {
+async function getProducts(onlyValues = false) {
   // retorna todos los produtos activos
   const products = await Producto.findAll({
     where: { activo: true },
@@ -18,21 +18,30 @@ async function getProducts() {
       {
         model: Review,
         attributes: ['id', 'comentario', 'evaluacion']
+      }
     ]
   });
+
+  if (onlyValues) {
+    const parsed = products.map(product => ({
+      ...product.dataValues,
+      rating: (product.dataValues.Reviews.reduce((a, b) => (a.evaluacion + b.evaluacion), 0) / product.dataValues.Reviews.length) || 0
+    }));
+    return parsed;
+  }
 
   return products;
 }
 
 
-async function getProduct(identifier) {
+async function getProduct(identifier, onlyValues = false) {
   // retorna un producto en particular
   const validUID = /^[0-9a-fA-F]{8}\b-([0-9a-fA-F]{4}-){3}\b[0-9a-fA-F]{12}$/;
   const uid = validUID.test(identifier) && identifier;
 
-  const products = await getProducts();
+  const products = await getProducts(onlyValues);
   // si el identificador es un UID valido, buscar por UID
-  const product = products.find(prod => uid ? prod.uid === uid : prod.nombre === identifier);
+  const product = products.find(prod => uid ? prod.id === uid : prod.nombre === identifier);
 
   return product; // retornar la instancia del modelo
 }
