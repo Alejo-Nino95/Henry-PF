@@ -27,31 +27,10 @@ async function getPedido(identifier) {
 async function createPedido(data) {
   // crear un pedido
   // se asume que los datos ya han sido validados
-  console.log(data);
 
-
-
-  const newPedido = await Pedidos.create(data, {include: [ItemsPedido]})
+  const newPedido = await Pedidos.create(data, {include: [ItemsPedido, Usuario]})
   if (!newPedido) return
   return newPedido
-
-  // const { direccion_despacho, status, f_pedido, f_entrega, UsuarioCorreo } = data;  
-  // const newPedido = await Pedidos.create({
-  //   direccion_despacho,
-  //   status,
-  //   f_pedido,
-  //   f_entrega,
-  //   ItemsPedidos: [...data.items]
-  // }, {
-  //   include : [ItemsPedido]
-  // });
-  // if (!newPedido) return;
-  // const newsItems = await ItemsPedido.findAll({where: {PedidoId: newPedido.id}});
-  // console.log('------------------\n',data.items[0].Product_Id,'\n-----------------------')
-  // const producto = await Producto.findByPk(data.items[0].Product_Id)
-  // console.log(producto);
-  // await producto.setItemsPedidos(newsItems)
-  // return newPedido.dataValues; // no retornar una instancia del modelo
 }
 
 
