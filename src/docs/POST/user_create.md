@@ -1,8 +1,10 @@
-##### Route :  
- - /user/create
+##### Route :
+
+- /user/create
 
 ##### Method:
- - POST
+
+- POST
 
 ##### Body:
 
@@ -18,8 +20,35 @@
 ```
 
 ##### Response:
+
 ```js
 {
-  mensaje: 'Usuario ha sido creado.'
+  mensaje: "Usuario ha sido creado.";
+}
+```
+
+##### Route :
+
+- /email/send
+
+##### Method:
+
+- POST
+
+##### Body:
+
+```js
+{
+  emailTo : "destino@host.com", || undefined => envia un email test a la casilla beefshophenry@gmail.com
+  motive : "activate" || "reset" || undefined
+}
+```
+
+##### Response:
+
+```js
+{
+  done: true || false
+  data: 200'id de mensaje' || 401'error'
 }
 ```
