@@ -100,6 +100,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 108755,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 5980,
       fotos: [
         "http://www.keyelectrics.com//product/fc336bf6-1d82-48ad-9a22-caeb2a7508f9.png",
@@ -112,6 +113,7 @@ const data = {
       nombre: "carne de cordero",
       precio: 104642,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de cordero'",
       stock: 8326,
       fotos: [
         "http://www.opencare.com//product/0d83efac-d553-4f21-b897-05778f1cb07e.png",
@@ -124,6 +126,7 @@ const data = {
       nombre: "carne de cerdo",
       precio: 133745,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de cerdo'",
       stock: 8374,
       fotos: [
         "http://www.tanlax.com//product/16ba2c95-78ac-458f-8bb2-7bf6aa9bcf60.raw",
@@ -137,6 +140,7 @@ const data = {
       nombre: "carne de res",
       precio: 130543,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de res'",
       stock: 8013,
       fotos: [
         "http://www.ranlax.com//product/d80fcdd6-1b5e-4138-99e5-711a8df2678f.jpg",
@@ -150,6 +154,7 @@ const data = {
       nombre: "carne de pavo",
       precio: 100107,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pavo'",
       stock: 8495,
       fotos: [
         "http://www.kintech.com//product/617fd9f9-5758-4f00-9a93-02afbb813c34.jpg",
@@ -163,6 +168,7 @@ const data = {
       nombre: "carne de cerdo",
       precio: 129296,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de cerdo'",
       stock: 8736,
       fotos: [
         "http://www.beta-taxon.com//product/f4fb8908-5bfc-4089-9465-9034cb256628.png",
@@ -175,6 +181,7 @@ const data = {
       nombre: "carne de venado",
       precio: 106997,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de venado'",
       stock: 5667,
       fotos: [
         "http://www.aptrax.com//product/cf46840e-efcb-465d-bc5b-c0f775654072.png",
@@ -187,6 +194,7 @@ const data = {
       nombre: "carne de cordero",
       precio: 123438,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de cordero'",
       stock: 9430,
       fotos: [
         "http://www.howranfase.com//product/0c5a836c-7af1-4762-8eb6-d9bc4f56474b.raw",
@@ -199,6 +207,7 @@ const data = {
       nombre: "carne de pato",
       precio: 116725,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pato'",
       stock: 5381,
       fotos: [
         "http://www.silvercode.com//product/e9ccdf21-31d2-45f6-b5cf-1220dd2b2938.raw",
@@ -211,6 +220,7 @@ const data = {
       nombre: "carne de res",
       precio: 105633,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de res'",
       stock: 5448,
       fotos: [
         "http://www.beta-taxon.com//product/04627978-2b9a-4594-b082-28dce6948537.png",
@@ -223,6 +233,7 @@ const data = {
       nombre: "carne de venado",
       precio: 107448,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de venado'",
       stock: 6473,
       fotos: [
         "http://www.funholding.com//product/c1c83537-fb22-4081-9fad-bb72c2f09448.jpg",
@@ -235,6 +246,7 @@ const data = {
       nombre: "carne de res",
       precio: 123079,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de res'",
       stock: 5471,
       fotos: [
         "http://www.ranlax.com//product/03f25187-bad6-4813-986b-cdc312b806f7.png",
@@ -247,6 +259,7 @@ const data = {
       nombre: "carne de res",
       precio: 126003,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de res'",
       stock: 5429,
       fotos: [
         "http://www.freetone.com//product/8dc88f23-b067-47be-8d4a-839bef5555c9.raw",
@@ -259,6 +272,7 @@ const data = {
       nombre: "carne de pavo",
       precio: 105698,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pavo'",
       stock: 6276,
       fotos: [
         "http://www.keyelectrics.com//product/3edac6cb-70d8-4ccf-9c08-e93f7b7bba7f.jpg",
@@ -271,6 +285,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 133149,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 8690,
       fotos: [
         "http://www.aptrax.com//product/a7c3f5f3-e551-4611-81e4-a485c7c1276b.png",
@@ -283,6 +298,7 @@ const data = {
       nombre: "carne de res",
       precio: 126301,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de res'",
       stock: 6526,
       fotos: [
         "http://www.gravejob.com//product/ee540ec7-4b35-4579-98d0-66573f69eee7.jpg",
@@ -295,6 +311,7 @@ const data = {
       nombre: "carne de cerdo",
       precio: 133734,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de cerdo'",
       stock: 6093,
       fotos: [
         "http://www.grooveholding.com//product/d91ff5cf-9a04-40ac-88b7-a003470ce66f.jpg",
@@ -307,6 +324,7 @@ const data = {
       nombre: "carne de res",
       precio: 114260,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de res'",
       stock: 9038,
       fotos: [
         "http://www.unala.com//product/5269db37-1a3d-4836-8391-df894651db47.jpg",
@@ -319,6 +337,7 @@ const data = {
       nombre: "carne de pato",
       precio: 104114,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pato'",
       stock: 8149,
       fotos: [
         "http://www.vivaholding.com//product/7f2a78a8-4f36-454a-b8d6-88b948a7efaf.jpg",
@@ -331,6 +350,7 @@ const data = {
       nombre: "carne de res",
       precio: 116712,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de res'",
       stock: 6760,
       fotos: [
         "http://www.y-dom.com//product/fa007390-215f-4967-9723-ee9674145d57.raw",
@@ -343,6 +363,7 @@ const data = {
       nombre: "carne de cerdo",
       precio: 122702,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de cerdo'",
       stock: 6395,
       fotos: [
         "http://www.opencare.com//product/6ead1164-3443-4c43-951e-97b35fe1941e.jpg",
@@ -355,6 +376,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 112047,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 8259,
       fotos: [
         "http://www.funtinin.com//product/41f16e07-56da-4178-b03e-db667aa86734.raw",
@@ -367,6 +389,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 129660,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 9199,
       fotos: [
         "http://www.freetone.com//product/a469f263-6e1b-41ef-bcbd-f924c82a2a56.png",
@@ -379,6 +402,7 @@ const data = {
       nombre: "carne de res",
       precio: 128516,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de res'",
       stock: 5629,
       fotos: [
         "http://www.zonice.com//product/512b5de4-41af-4eff-bcc2-148657e169e3.jpg",
@@ -391,6 +415,7 @@ const data = {
       nombre: "carne de cordero",
       precio: 124874,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de cordero'",
       stock: 7371,
       fotos: [
         "http://www.y-dom.com//product/faf2963f-d21b-4c04-8d96-47ae2f30644f.raw",
@@ -403,6 +428,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 126399,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 6382,
       fotos: [
         "http://www.biostreet.com//product/ca52e503-51b0-4d92-a619-7309472cd9dd.raw",
@@ -415,6 +441,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 127673,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 6622,
       fotos: [
         "http://www.treefix.com//product/0e075e54-cb51-4b48-8b88-3eb5e750129a.raw",
@@ -427,6 +454,7 @@ const data = {
       nombre: "carne de pavo",
       precio: 113531,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pavo'",
       stock: 6271,
       fotos: [
         "http://www.zenhigh.com//product/467efc4d-7054-4906-8058-c977c5771527.jpg",
@@ -439,6 +467,7 @@ const data = {
       nombre: "carne de venado",
       precio: 108978,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de venado'",
       stock: 5628,
       fotos: [
         "http://www.tantech.com//product/d13fbe6a-792b-4ec5-8ece-3d8275dc8161.png",
@@ -451,6 +480,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 99718,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 9153,
       fotos: [
         "http://www.doublelab.com//product/eb551c82-9cf0-4163-a899-d1fef4a2e83f.png",
@@ -463,6 +493,7 @@ const data = {
       nombre: "carne de venado",
       precio: 113594,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de venado'",
       stock: 8907,
       fotos: [
         "http://www.truetam.com//product/4c8183f7-300b-4a95-8817-08c0d052bd58.raw",
@@ -475,6 +506,7 @@ const data = {
       nombre: "carne de pavo",
       precio: 124640,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pavo'",
       stock: 5342,
       fotos: [
         "http://www.unala.com//product/9c681fd7-9323-4a29-b94e-0ef993fadd81.jpg",
@@ -487,6 +519,7 @@ const data = {
       nombre: "carne de cordero",
       precio: 100777,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de cordero'",
       stock: 6681,
       fotos: [
         "http://www.zenhigh.com//product/e8f47c9f-d544-4e72-a489-c10226d3ce4c.raw",
@@ -499,6 +532,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 106845,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 5455,
       fotos: [
         "http://www.hare-comics.com//product/f87e4b1c-b89f-4f5f-89c7-2eaee4eab2a1.png",
@@ -511,6 +545,7 @@ const data = {
       nombre: "carne de pato",
       precio: 127385,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pato'",
       stock: 8817,
       fotos: [
         "http://www.biostreet.com//product/38fd5b8c-b9f0-43d2-a708-9b466d3cb688.jpg",
@@ -523,6 +558,7 @@ const data = {
       nombre: "carne de venado",
       precio: 111603,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de venado'",
       stock: 8645,
       fotos: [
         "http://www.ventostreet.com//product/000fec35-ad45-4210-9908-c67f877f018e.jpg",
@@ -535,6 +571,7 @@ const data = {
       nombre: "carne de venado",
       precio: 131908,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de venado'",
       stock: 6789,
       fotos: [
         "http://www.funtinin.com//product/7f621169-11c3-4723-bac3-d65a99b97a68.jpg",
@@ -547,6 +584,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 103240,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 7999,
       fotos: [
         "http://www.zenhigh.com//product/09ca1119-53ff-4492-b71d-8e03f73796e5.png",
@@ -559,6 +597,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 100623,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 9098,
       fotos: [
         "http://www.mediaplanet.com//product/dac640f5-e8bd-4ad2-b8ca-4bdbba02bda7.raw",
@@ -571,6 +610,7 @@ const data = {
       nombre: "carne de pollo",
       precio: 133921,
       presentacion: "kg",
+      descripcion: "descripcion de 'carne de pollo'",
       stock: 7065,
       fotos: [
         "http://www.hare-comics.com//product/e810c7a2-46a8-4525-8d96-a3e5acf11a07.png",
@@ -580,21 +620,21 @@ const data = {
       ]
     }
   ],
-    // pedidos: [
-    //   {
-    //     direccion: "West Avenue 330, St. Louis",
-    //     status: "Proceso",
-    //     f_pedido: new Date(),
-    //     f_entrega: new Date(f_pedido.getMonth() + '/' + (f_pedido.getDate() + 1) + '/' +f_pedido.getFullYear()),
-    //   },
-    //   {
-    //     direccion: "Maple Street 467, Lexington-Fayette",
-    //     status: "Proceso",
-    //     f_pedido: new Date(),
-    //     f_entrega: new Date(f_pedido.getMonth() + '/' + (f_pedido.getDate() + 1) + '/' +f_pedido.getFullYear()),
-    //   },
+  // pedidos: [
+  //   {
+  //     direccion: "West Avenue 330, St. Louis",
+  //     status: "Proceso",
+  //     f_pedido: new Date(),
+  //     f_entrega: new Date(f_pedido.getMonth() + '/' + (f_pedido.getDate() + 1) + '/' +f_pedido.getFullYear()),
+  //   },
+  //   {
+  //     direccion: "Maple Street 467, Lexington-Fayette",
+  //     status: "Proceso",
+  //     f_pedido: new Date(),
+  //     f_entrega: new Date(f_pedido.getMonth() + '/' + (f_pedido.getDate() + 1) + '/' +f_pedido.getFullYear()),
+  //   },
 
-    // ],
-  };
+  // ],
+};
 
 module.exports = data;
