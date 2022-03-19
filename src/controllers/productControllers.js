@@ -1,7 +1,7 @@
 const { Producto, Categoria } = require('../db.js');
 const { getCategory } = require('./categoryControllers.js');
 
-const MAX_DESC_LENGTH = 500;
+const MAX_DESC_LENGTH = 100;
 const MAX_NAME_LENGTH = 20;
 
 
@@ -36,8 +36,8 @@ async function getProduct(identifier) {
 async function createProduct(data) {
   // crear un producto
   // se asume que los datos ya han sido validados
-  const { categoria, nombre, precio, presentacion, stock, fotos } = data;
-  const newProduct = await Producto.create({ nombre, precio, presentacion, stock, fotos });
+  const { categoria, nombre, precio, descripcion, stock, fotos } = data;
+  const newProduct = await Producto.create({ nombre, precio, descripcion, stock, fotos });
   const category = await getCategory(categoria);
 
   if (!category) {
@@ -89,11 +89,12 @@ async function deleteProduct(productId) {
 }
         
 
-function validateProduct(nombre, precio, presentacion, stock, fotos) {
+function validateProduct(nombre, precio, descripcion, stock, fotos) {
   // validar / formatear datos
-  nombre = String(nombre).replace(/\W/g, '');
-  const values = { nombre, precio, presentacion, stock, fotos };
+  const values = { nombre, precio, descripcion, stock, fotos };
   const errors = Object.keys(values).map(key => (values[key] === null || values[key] === undefined) && key).filter(e => e);
+  nombre = String(nombre).replace(/\s+/g, ' ');
+  descripcion = String(descripcion).replace(/\s+/g, ' ');
   precio = Number(precio);
   stock = Number(stock);
   if (errors.length) {
@@ -112,11 +113,11 @@ function validateProduct(nombre, precio, presentacion, stock, fotos) {
     return { error: `El nombre debe contener ${MAX_NAME_LENGTH} caracteres tener como maximo.` };
   }
 
-  if (presentacion.length > MAX_DESC_LENGTH) {
-    return { error: `La presentacion debe contener ${MAX_DESC_LENGTH} caracteres tener como maximo.` };
+  if (descripcion.length > MAX_DESC_LENGTH) {
+    return { error: `La descripcion debe contener ${MAX_DESC_LENGTH} caracteres tener como maximo.` };
   }
 
-  const out = { nombre, precio, presentacion, stock, fotos };
+  const out = { nombre, precio, descripcion, stock, fotos };
 
   return out;
 }
