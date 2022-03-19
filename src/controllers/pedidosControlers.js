@@ -1,13 +1,13 @@
-const { Pedidos, Usuarios, ItemsPedido, Reviews, Producto } = require('../db.js');
+const { Pedidos, Usuario, ItemsPedido, Reviews, Producto } = require('../db.js');
 
 async function getPedidos() {
   // retorna todos los pedidos
-  const pedidos = await Pedidos.findAll() //{
-    // include: [
-    //     {model: Usuarios, attributes: ["nombre","apellido","direccion"]},
-    //     {model: ItemsPedido, attributes: ["descripcion","precio","cantidad"]}
-    // ]
-  // });
+  const pedidos = await Pedidos.findAll({
+    include: [
+        // {model: Usuarios, attributes: ["nombre","apellido","direccion"]},
+        {model: ItemsPedido, attributes: ["descripcion","precio","cantidad"]}
+    ]
+  });
   return pedidos;
 }
 
@@ -27,43 +27,10 @@ async function getPedido(identifier) {
 async function createPedido(data) {
   // crear un pedido
   // se asume que los datos ya han sido validados
-  const { direccion_despacho, status, f_pedido, f_entrega, correo } = data;  
-  let listItems = [];
-  let listReseñas = [];
-  data.items.forEach(item => {
-    const newItems = {descripcion: item.tipo_corte, precio: item.precio, cantidad: item.cantidad, Producto_Id: item.ProductoId};  
-    listItems.push(newItems);
-    if (item.reseña || item.evaluacion){
-      const newReseña = {reseña: item.reseña, evaluacion: item.evaluacion, Producto_Id: item.ProductoId}
-      listReseñas.push(newReseña)
-    }
-  })
-  const newPedido = await Pedidos.create({
-    direccion_despacho,
-    status,
-    f_pedido,
-    f_entrega,
-    ItemsPedidos: [...listItems]
-  }, {
-    include : [ItemsPedido]
-  });
 
-  const items_prueba = await ItemsPedido.findOne({where: {descripcion: listItems[0].descripcion}})
-  await items_prueba.setProducto(listItems[0].Producto_Id)
-
-  if (!newPedido) return;
-  
-  return newPedido.dataValues; // no retornar una instancia del modelo
-
-
-  // if (!newPedido) return;
-  // if (listReseñas.length) {
-  //   console.log(listReseñas)
-  //   const newReseñas = await Reviews.bulkCreate(listReseñas, {
-  //     include: Producto
-  //   });
-  // }
-  return newPedido.dataValues; // no retornar una instancia del modelo
+  const newPedido = await Pedidos.create(data, {include: [ItemsPedido, Usuario]})
+  if (!newPedido) return
+  return newPedido
 }
 
 
@@ -106,7 +73,9 @@ async function deletePedido(pedidoId) {
   return true;
 
 }
-        
+function validateItemsPedido(items) {
+  return items
+}
 
 function validatePedido(data) {
   // validar / formatear datos
@@ -115,7 +84,7 @@ function validatePedido(data) {
           status,
           f_pedido,
           f_entrega,
-          items,
+          ItemsPedidos,
           correo,
   } = data;
   
@@ -127,7 +96,7 @@ function validatePedido(data) {
     errors.forEach(e => texto = ', ' + e + texto) 
     texto = (errors.length > 1 ? 'Los campos ': 'El campo ') + texto.slice(2) + '. no ' + (errors.length > 1 ? 'pueden estar vacios': 'puede estar vacio.');
   }
-  if (items === undefined || items.length == 0 ) {
+  if (ItemsPedidos === undefined || ItemsPedidos.length == 0 ) {
      texto += '\nEl pedido no posee Items, Debe incluir por lo menos un Producto'
   }
   

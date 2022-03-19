@@ -8,12 +8,15 @@ module.exports = (sequelize) => {
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
         },
-        descripcion: {
+        nombre: {
             type: DataTypes.STRING,
         },
         precio: {
             type: DataTypes.DECIMAL,
             allowNull: false,
+        },
+        presentacion: {
+            type: DataTypes.STRING,
         },
         cantidad: {
             type: DataTypes.DECIMAL,

@@ -40,24 +40,15 @@ Categoria.belongsToMany(Producto, { through: 'categoria' });
 Producto.hasMany(Review);
 Review.belongsTo(Producto); //, { through: 'reviews' });
 
-Pedidos.belongsToMany(ItemsPedido, { through: 'Pedidos_items' });
-ItemsPedido.belongsToMany(Pedidos, { through: 'Pedidos_items' });
-
-Pedidos.belongsToMany(Usuario, { through: 'Pedidos_Usuarios' });
-Usuario.belongsToMany(Pedidos, { through: 'Pedidos_Usuarios' });
-
-Pedidos.hasMany(ItemsPedido);
-ItemsPedido.belongsTo(Pedidos); //,{foreignKey: 'pedidosId'}); //, { through: 'Pedidos_items'})
+Usuario.hasMany(Pedidos); //, { through: 'Pedidos_Usuarios' });
+Pedidos.belongsTo(Usuario); //, { through: 'Pedidos_Usuarios' });
 
 Producto.hasMany(ItemsPedido);
 ItemsPedido.belongsTo(Producto);
 
-// Producto.hasOne(ItemsPedido);
-// Producto.hasMany(ItemsPedido);
-// ItemsPedido.belongsTo(Producto);
 
-//Pedido.hasOne(Review); descomentar cuando sea creado el modelo pedidos
-//Review.belongsTo(Pedido);
+Pedidos.hasMany(ItemsPedido); //, { through: 'Pedidos_items' });
+ItemsPedido.belongsTo(Pedidos); // { through: 'Pedidos_items' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
