@@ -45,19 +45,6 @@ router.get('/all', async (req, res) => {
 });
 
 
-router.get('/category/:categoryId', async (req, res) => {
-
-  const { categoryId } = req.params;
-
-  const products = await getProducts(true);
-
-  const filtered = products.filter(prod => prod.Categoria.find(cat => cat.id === Number(categoryId)));
-
-  res.status(200).send(filtered);
-
-});
-
-
 router.get('/get/:productId', async (req, res) => {
   
   const { productId } = req.params;
