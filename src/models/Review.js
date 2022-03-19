@@ -2,16 +2,15 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     // defino el modelo
-    sequelize.define('Reviews', {
+    sequelize.define('Review', {
         id: {
             type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
-            allowNull: false,
-            // autoIncrement: true,
         },
-        resena: {
+        comentario: {
             type: DataTypes.STRING,
-            allowNull:false,
+            allowNull: false,
         },
         evaluacion: {
             type: DataTypes.INTEGER,

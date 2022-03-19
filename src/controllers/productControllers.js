@@ -1,4 +1,4 @@
-const { Producto, Categoria } = require('../db.js');
+const { Producto, Categoria, Review } = require('../db.js');
 const { getCategory } = require('./categoryControllers.js');
 
 const MAX_DESC_LENGTH = 100;
@@ -10,10 +10,15 @@ async function getProducts() {
   const products = await Producto.findAll({
     where: { activo: true },
     attributes: { exclude: ['activo'] },
-    include: {
-      model: Categoria,
-      attributes: ['id', 'nombre']
-    }
+    include: [
+      {
+        model: Categoria,
+        attributes: ['id', 'nombre']
+      },
+      {
+        model: Review,
+        attributes: ['id', 'comentario', 'evaluacion']
+    ]
   });
 
   return products;

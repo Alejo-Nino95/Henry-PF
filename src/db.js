@@ -30,15 +30,15 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Producto, Usuario, Categoria, ItemsPedido, Reviews, Pedidos } = sequelize.models;
+const { Producto, Usuario, Categoria, ItemsPedido, Review, Pedidos } = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+// Product.hasMany(Review);
 Producto.hasMany(Categoria);
 Categoria.belongsToMany(Producto, { through: 'categoria' });
 
-Producto.hasMany(Reviews);
-Reviews.belongsTo(Producto); //, { through: 'reviews' });
+Producto.hasMany(Review);
+Review.belongsTo(Producto); //, { through: 'reviews' });
 
 Pedidos.belongsToMany(ItemsPedido, { through: 'Pedidos_items' });
 ItemsPedido.belongsToMany(Pedidos, { through: 'Pedidos_items' });
@@ -49,21 +49,15 @@ Usuario.belongsToMany(Pedidos, { through: 'Pedidos_Usuarios' });
 Pedidos.hasMany(ItemsPedido);
 ItemsPedido.belongsTo(Pedidos); //,{foreignKey: 'pedidosId'}); //, { through: 'Pedidos_items'})
 
-Producto.hasMany(ItemsPedido)
-ItemsPedido.belongsTo(Producto)
+Producto.hasMany(ItemsPedido);
+ItemsPedido.belongsTo(Producto);
 
 // Producto.hasOne(ItemsPedido);
-
-
-Pedidos.belongsToMany(ItemsPedido, { through: 'Pedidos_items' });
-ItemsPedido.belongsToMany(Pedidos, { through: 'Pedidos_items' });
-
-
 // Producto.hasMany(ItemsPedido);
 // ItemsPedido.belongsTo(Producto);
 
-//Pedido.hasOne(Reviews); descomentar cuando sea creado el modelo pedidos
-//Reviews.belongsTo(Pedido);
+//Pedido.hasOne(Review); descomentar cuando sea creado el modelo pedidos
+//Review.belongsTo(Pedido);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
