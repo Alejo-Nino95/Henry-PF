@@ -17,8 +17,8 @@ async function registerEmail(input) {
     const user = await Usuario.findOne({
       where: { correo: email }
     })
-
-    if (!user) {
+    
+    if (!user || !user.dataValues.activo) {    
       let buf = jwt.sign({ email: email }, process.env.EMAIL_CONFIRM_TOKEN, { expiresIn: 60 * 10 });//expira en 10 min
       let activateAccountHtml =
         `
