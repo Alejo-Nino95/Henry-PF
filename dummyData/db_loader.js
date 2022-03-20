@@ -2,7 +2,7 @@ const uc = require('../src/controllers/userControllers.js');
 const pc = require('../src/controllers/productControllers.js');
 const cc = require('../src/controllers/categoryControllers.js');
 const rc = require('../src/controllers/reviewControllers');
-let { users, products, categories, reviews } = require('./data.js');
+let { users, products, categories, reviews, newProducts } = require('./data.js');
 
 const rows = users.length + products.length + categories.length + reviews.length;
 
@@ -34,14 +34,29 @@ async function loadDB() {
   const dbCategories = await cc.getCategories().then(res => res.map(e => e.dataValues));
   console.warn(`[!] products...`);
 
-  for (const product of products) {
+  // for (const product of products) {
 
-    const created = await pc.createProduct({ ...product, categoria: dbCategories[Math.floor(Math.random() * dbCategories.length)].id });
+  //   const created = await pc.createProduct({ ...product, categoria: dbCategories[Math.floor(Math.random() * dbCategories.length)].id });
 
-    if (created) {
-      console.log('product =>', created.id);
+  //   if (created) {
+  //     console.log('product =>', created.id);
+  //   }
+  // }
+
+  try {
+    for (const product of newProducts) {
+
+      const created = await pc.createProduct(product);
+  
+      if (created) {
+        console.log(!created.id ? created.error: created.id);
+      }
     }
+      
+  } catch (error) {
+    console.log(error)    
   }
+
 
   const dbProducts = await pc.getProducts(true);
   console.warn(`[!] reviews...`);

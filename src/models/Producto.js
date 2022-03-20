@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         fotos: {
-            type: DataTypes.ARRAY(DataTypes.STRING),
+            type: DataTypes.ARRAY(DataTypes.STRING(700)),
             allowNull: false
         },
         // no borrar datos de la DB, solo desactivarlos
