@@ -6,7 +6,7 @@ const {
   updatePedido,
   deletePedido,
   validatePedido 
-} = require('../../controllers/pedidosControlers');
+} = require('../../controllers/pedidoControlers');
   
 const router = require('express').Router();
 

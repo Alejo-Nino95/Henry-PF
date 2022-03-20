@@ -1,4 +1,6 @@
 const { Review, Producto } = require('../db.js');
+const { getProduct } = require('./productControllers.js');
+const { getUser } = require('./userControllers.js');
 
 
 async function getReviews() {
@@ -33,9 +35,27 @@ async function getReview(identifier) {
 
 async function createReview(data) {
   // crear una reseña
-  const { evaluacion, comentario } = data;  
+  const { evaluacion, comentario, userId, productId } = data;
+
+  const usuario = await getUser(userId);
+
+  if (!usuario) {
+    return { error: `Usuario con id ${userId} no existe.` };
+  }
+
+  const producto = await getProduct(productId);
+
+  if (!producto) {
+    return { error: `Producto con id ${productId} no existe.` };
+  }
+
   const newReview = await Review.create({ evaluacion, comentario });
+
   if (!newReview) return;
+
+  await usuario.addReview(newReview);
+  await producto.addReview(newReview);
+
   return newReview.dataValues; // no retornar una instancia del modelo
 }
 
