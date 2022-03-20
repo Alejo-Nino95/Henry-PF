@@ -6,11 +6,12 @@ const {
   updatePedido,
   deletePedido,
   validatePedido 
-} = require('../../controllers/pedidosControlers');
+} = require('../../controllers/pedidoControlers');
   
 const router = require('express').Router();
 
 
+<<<<<<< HEAD:src/routes/pedidosRoutes/pedidosRoutes.js
 router.post('/create', async (req, res, next) => {
   try {
     const datachecked = validatePedido(req.body);
@@ -21,6 +22,15 @@ router.post('/create', async (req, res, next) => {
   } catch (error) {
     next(error)
   }
+=======
+router.post('/create', async (req, res) => {
+
+  const datachecked = validatePedido(req.body);
+  if (datachecked.error) return res.status(500).send(datachecked);
+  const newPedido = await createPedido(req.body);
+  if (!newPedido) return res.status(500).send('Ocurrio un error al intentar crear el pedido. Pedido no generado');
+  res.status(200).send(req.body);
+>>>>>>> 5fa42f95639e61bcaf9267ed5a4a74255bbaa273:src/routes/pedidoRoutes/pedidoRoutes.js
 });
 
 router.get('/all', async (req, res, next) => {

@@ -577,6 +577,168 @@ const data = {
       ]
     }
   ],
+  reviews: [
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 5
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 1
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 2
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 2
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 5
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 2
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 4
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 2
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 4
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 1
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 5
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 1
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 2
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 4
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 5
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 4
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 4
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 1
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 4
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 4
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 1
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 1
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 4
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 2
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 2
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 4
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 4
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 5
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 3
+    },
+    {
+      comentario: "Lorem ipsum dolor sit amet....",
+      evaluacion: 2
+    }
+  ]
   // pedidos: [
   //   {
   //     direccion: "West Avenue 330, St. Louis",
