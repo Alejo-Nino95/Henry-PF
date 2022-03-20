@@ -12,9 +12,11 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        descripcion: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
+        descripcion: {  
+            type: DataTypes.STRING(800),
+        },
+        presentacion: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
         },
         precio: {
             type: DataTypes.FLOAT,
@@ -23,6 +25,9 @@ module.exports = (sequelize) => {
         stock: {
             type: DataTypes.FLOAT,
             allowNull: false,
+        },
+        stock_minimo: {
+            type: DataTypes.FLOAT,
         },
         fotos: {
             type: DataTypes.ARRAY(DataTypes.STRING(700)),
