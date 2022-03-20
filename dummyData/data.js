@@ -445,18 +445,6 @@ const data = {
       ]
     },
     {
-      nombre: "carne de pollo",
-      precio: 99718,
-      presentacion: "kg",
-      stock: 9153,
-      fotos: [
-        "http://www.doublelab.com//product/eb551c82-9cf0-4163-a899-d1fef4a2e83f.png",
-        "http://www.gravejob.com//product/b1268dc3-c150-4d35-9b50-2806c86e48fc.raw",
-        "http://www.unala.com//product/7005a890-bfba-43aa-8867-d4eab441fff8.png",
-        "http://www.ventostreet.com//product/326ad062-7db0-4cbc-93a1-a6c143f5bd8f.png"
-      ]
-    },
-    {
       nombre: "carne de venado",
       precio: 113594,
       presentacion: "kg",
@@ -554,6 +542,42 @@ const data = {
     },
     {
       nombre: "carne de pollo",
+      precio: 100623,
+      presentacion: "kg",
+      stock: 9098,
+      fotos: [
+        "http://www.mediaplanet.com//product/dac640f5-e8bd-4ad2-b8ca-4bdbba02bda7.raw",
+        "http://www.grooveholding.com//product/a5154326-26d4-4dd1-897b-8bdfc0961a70.jpg",
+        "http://www.ventostreet.com//product/ba151aa0-f97c-4835-adb6-148980bca2b9.png",
+        "http://www.aptrax.com//product/41cfaa82-7992-4ca5-92b2-747e4651c672.png"
+      ]
+    },
+    {
+      nombre: "pollo",
+      precio: 100623,
+      presentacion: "kg",
+      stock: 9098,
+      fotos: [
+        "http://www.mediaplanet.com//product/dac640f5-e8bd-4ad2-b8ca-4bdbba02bda7.raw",
+        "http://www.grooveholding.com//product/a5154326-26d4-4dd1-897b-8bdfc0961a70.jpg",
+        "http://www.ventostreet.com//product/ba151aa0-f97c-4835-adb6-148980bca2b9.png",
+        "http://www.aptrax.com//product/41cfaa82-7992-4ca5-92b2-747e4651c672.png"
+      ]
+    },
+    {
+      nombre: "cordero",
+      precio: 100623,
+      presentacion: "kg",
+      stock: 9098,
+      fotos: [
+        "http://www.mediaplanet.com//product/dac640f5-e8bd-4ad2-b8ca-4bdbba02bda7.raw",
+        "http://www.grooveholding.com//product/a5154326-26d4-4dd1-897b-8bdfc0961a70.jpg",
+        "http://www.ventostreet.com//product/ba151aa0-f97c-4835-adb6-148980bca2b9.png",
+        "http://www.aptrax.com//product/41cfaa82-7992-4ca5-92b2-747e4651c672.png"
+      ]
+    },
+    {
+      nombre: "Baby Beef",
       precio: 100623,
       presentacion: "kg",
       stock: 9098,
