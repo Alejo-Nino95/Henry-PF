@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     // defino el modelo
-    sequelize.define('Pedidos', {
+    sequelize.define('Pedido', {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
@@ -24,5 +24,9 @@ module.exports = (sequelize) => {
             type: DataTypes.DATE,
             allowNull: false,
         },
+        UsuarioCorreo: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
     });
 };

@@ -1,69 +1,56 @@
-const { Pedidos, Usuarios, ItemsPedido, Reviews, Producto } = require('../db.js');
+const { Pedido, Usuario, ItemsPedido, Reviews, Producto } = require('../db.js');
 
-async function getPedidos() {
+async function getPedidos() {    // Devuelve todos los pedidos realizados de la BD con sus Items.
   // retorna todos los pedidos
-  const pedidos = await Pedidos.findAll() //{
-    // include: [
-    //     {model: Usuarios, attributes: ["nombre","apellido","direccion"]},
-    //     {model: ItemsPedido, attributes: ["descripcion","precio","cantidad"]}
-    // ]
-  // });
+  const pedidos = await Pedido.findAll({
+    include: [
+        {model: Usuario, attributes: ["correo", "nombre","apellido","direccion"]},
+        {model: ItemsPedido, attributes: ["id", "nombre", "presentacion", "precio", "cantidad"]}
+    ]
+  });
   return pedidos;
 }
 
 
 async function getPedido(identifier) {
   // retorna un pedido en particular
-  const pedido = await Pedidos.findByPk(identifier, {
-    include: [
-      {model: Usuarios, attributes: ["nombre","apellido","direccion"]},
-      {model: ItemsPedido, attributes: ["descripcion","precio","cantidad"]}
-    ]
-  });
-  return pedido; // retornar la instancia del modelo
+  const validUID = (/^[0-9a-fA-F]{8}\b-([0-9a-fA-F]{4}-){3}\b[0-9a-fA-F]{12}$/).test(identifier);
+  const validUcorreo = (/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i).test(identifier);
+  try {
+    if (validUID) {
+      const pedido = await Pedido.findByPk(identifier, {
+        include: [
+          {model: Usuario, attributes: ["correo", "nombre","apellido","direccion"]},
+          {model: ItemsPedido, attributes: ["id", "nombre", "presentacion", "precio", "cantidad"]}
+      ]
+      });
+      return pedido; // retornar la instancia del modelo        
+    }  
+
+    if (validUcorreo) {
+      const pedido = await Pedido.findAll({
+        where: {UsuarioCorreo: identifier},
+        include: [
+          {model: Usuario, attributes: ["correo", "nombre","apellido","direccion"]},
+          {model: ItemsPedido, attributes: ["id", "nombre", "presentacion", "precio", "cantidad"]}
+      ]
+      });
+      return pedido; // retornar la instancia del modelo        
+    } 
+    return
+  } catch (error) {
+    return {"error": error}
+  }
 }
 
 
 async function createPedido(data) {
   // crear un pedido
   // se asume que los datos ya han sido validados
-  const { direccion_despacho, status, f_pedido, f_entrega, correo } = data;  
-  let listItems = [];
-  let listReseñas = [];
-  data.items.forEach(item => {
-    const newItems = {descripcion: item.tipo_corte, precio: item.precio, cantidad: item.cantidad, Producto_Id: item.ProductoId};  
-    listItems.push(newItems);
-    if (item.reseña || item.evaluacion){
-      const newReseña = {reseña: item.reseña, evaluacion: item.evaluacion, Producto_Id: item.ProductoId}
-      listReseñas.push(newReseña)
-    }
-  })
-  const newPedido = await Pedidos.create({
-    direccion_despacho,
-    status,
-    f_pedido,
-    f_entrega,
-    ItemsPedidos: [...listItems]
-  }, {
-    include : [ItemsPedido]
-  });
 
-  const items_prueba = await ItemsPedido.findOne({where: {descripcion: listItems[0].descripcion}})
-  await items_prueba.setProducto(listItems[0].Producto_Id)
-
-  if (!newPedido) return;
-  
-  return newPedido.dataValues; // no retornar una instancia del modelo
-
-
-  // if (!newPedido) return;
-  // if (listReseñas.length) {
-  //   console.log(listReseñas)
-  //   const newReseñas = await Reviews.bulkCreate(listReseñas, {
-  //     include: Producto
-  //   });
-  // }
-  return newPedido.dataValues; // no retornar una instancia del modelo
+  const newPedido = await Pedido.create(data, {include: [ItemsPedido, Usuario]})
+  if (!newPedido) return
+  return newPedido
 }
 
 
@@ -94,7 +81,7 @@ async function deletePedido(pedidoId) {
     return { error: `Pedido con id:${pedidoId} no existe.` };
   }
 
-  const deleted = await Pedidos.destroy({ 
+  const deleted = await Pedido.destroy({ 
     where: {id: pedidoId},
     include: ItemsPedido
   }); // cambiar a inactivo
@@ -106,7 +93,11 @@ async function deletePedido(pedidoId) {
   return true;
 
 }
-        
+
+
+function validateItemsPedido(items) {
+  return items
+}
 
 function validatePedido(data) {
   // validar / formatear datos
@@ -115,19 +106,19 @@ function validatePedido(data) {
           status,
           f_pedido,
           f_entrega,
-          items,
-          correo,
+          ItemsPedidos,
+          UsuarioCorreo,
   } = data;
   
   direccion_despacho = String(direccion_despacho).replace(/\W/g, '');
-  const values = { direccion_despacho, status, f_pedido, f_entrega, correo};
+  const values = { direccion_despacho, status, f_pedido, f_entrega, UsuarioCorreo};
   const errors = Object.keys(values).map(key => (values[key] === null || values[key] === undefined) && key).filter(e => e);
   let texto = '';
   if (errors.length) {
     errors.forEach(e => texto = ', ' + e + texto) 
     texto = (errors.length > 1 ? 'Los campos ': 'El campo ') + texto.slice(2) + '. no ' + (errors.length > 1 ? 'pueden estar vacios': 'puede estar vacio.');
   }
-  if (items === undefined || items.length == 0 ) {
+  if (ItemsPedidos === undefined || ItemsPedidos.length == 0 ) {
      texto += '\nEl pedido no posee Items, Debe incluir por lo menos un Producto'
   }
   

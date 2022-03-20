@@ -1,8 +1,10 @@
-##### Route :  
- - /user/create
+##### Route :
+
+- /user/create
 
 ##### Method:
- - POST
+
+- POST
 
 ##### Body:
 
@@ -18,8 +20,9 @@
 ```
 
 ##### Response:
+
 ```js
 {
-  mensaje: 'Usuario ha sido creado.'
+  mensaje: "Usuario ha sido creado.";
 }
 ```

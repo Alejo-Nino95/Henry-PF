@@ -1,8 +1,46 @@
+require('dotenv').config();
 const { Usuario } = require('../db.js');
+const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
-
+const { 
+  sendEmail
+} = require('./nodemailer');
+const activateAccountSubject = "Activate account ✔"
 const salt = 10;
 const MAX_NAME_LENGTH = 20;
+
+async function registerEmail(input) {
+  try {
+    const email = validateEmail(input)
+    if (!email) return { done: false, type: 'warning', data: 'Asegurese de que la dirección de correo sea válida y vuelva a intentar' }
+    
+    const user = await Usuario.findOne({
+      where: { correo: email }
+    })
+    
+    if (!user || !user.dataValues.activo) {    
+      let buf = jwt.sign({ email: email }, process.env.EMAIL_CONFIRM_TOKEN, { expiresIn: 60 * 10 });//expira en 10 min
+      let activateAccountHtml =
+        `
+      <div><h2><p>Gracias por registrarse en nuestra plataforma</h2></p></div> 
+          
+      <div><h2><p><a href='http://localhost:3000/activateAccount?vkey=${buf}'>Click para confirmar cuenta</a></p></h2></div>
+      <div><p>O bien puede ingresar el siguente enlace en el navegador web</p>
+      <p>http://localhost:3000/activateAccount?vkey=${buf}</p></div>
+      <div></div>
+      <div><p>Desestime este correo en caso de error.</p></div>
+      `
+      const tryToSendEmail = await sendEmail(email, activateAccountSubject, activateAccountHtml)
+      return tryToSendEmail        
+    } 
+
+    return { done: false, type: 'warning', data: 'El email ya se encuentra registrado' }
+
+  } catch (error) {
+    return { done:false, type:'error', data:error }
+  }
+}
+
 
 async function getUsers(include_password = false) {
   // retorna todos los produtos activos
@@ -85,6 +123,12 @@ async function deleteUser(userId) {
 
 }
 
+function validateEmail(input) {
+  if (/^.+@.+\..+$/.test(input)) {
+    return input
+  }
+  return undefined
+}
 
 function validateUser(data) {
   // validar / formatear datos
@@ -132,5 +176,7 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
-  validateUser
+  validateUser,
+  validateEmail,
+  registerEmail
 };

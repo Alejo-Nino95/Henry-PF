@@ -12,12 +12,16 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        descripcion: {
+            type: DataTypes.STRING(100),
+            allowNull: false,
+        },
         precio: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.FLOAT,
             allowNull: false,
         },
         stock: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.FLOAT,
             allowNull: false,
         },
         fotos: {
