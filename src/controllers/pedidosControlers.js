@@ -1,11 +1,11 @@
-const { Pedidos, Usuario, ItemsPedido, Reviews, Producto } = require('../db.js');
+const { Pedido, Usuario, ItemsPedido, Reviews, Producto } = require('../db.js');
 
-async function getPedidos() {
+async function getPedidos() {    // Devuelve todos los pedidos realizados de la BD con sus Items.
   // retorna todos los pedidos
-  const pedidos = await Pedidos.findAll({
+  const pedidos = await Pedido.findAll({
     include: [
-        // {model: Usuarios, attributes: ["nombre","apellido","direccion"]},
-        {model: ItemsPedido, attributes: ["descripcion","precio","cantidad"]}
+        {model: Usuario, attributes: ["correo", "nombre","apellido","direccion"]},
+        {model: ItemsPedido, attributes: ["id", "nombre", "presentacion", "precio", "cantidad"]}
     ]
   });
   return pedidos;
@@ -14,13 +14,33 @@ async function getPedidos() {
 
 async function getPedido(identifier) {
   // retorna un pedido en particular
-  const pedido = await Pedidos.findByPk(identifier, {
-    include: [
-      {model: Usuarios, attributes: ["nombre","apellido","direccion"]},
-      {model: ItemsPedido, attributes: ["descripcion","precio","cantidad"]}
-    ]
-  });
-  return pedido; // retornar la instancia del modelo
+  const validUID = (/^[0-9a-fA-F]{8}\b-([0-9a-fA-F]{4}-){3}\b[0-9a-fA-F]{12}$/).test(identifier);
+  const validUcorreo = (/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i).test(identifier);
+  try {
+    if (validUID) {
+      const pedido = await Pedido.findByPk(identifier, {
+        include: [
+          {model: Usuario, attributes: ["correo", "nombre","apellido","direccion"]},
+          {model: ItemsPedido, attributes: ["id", "nombre", "presentacion", "precio", "cantidad"]}
+      ]
+      });
+      return pedido; // retornar la instancia del modelo        
+    }  
+
+    if (validUcorreo) {
+      const pedido = await Pedido.findAll({
+        where: {UsuarioCorreo: identifier},
+        include: [
+          {model: Usuario, attributes: ["correo", "nombre","apellido","direccion"]},
+          {model: ItemsPedido, attributes: ["id", "nombre", "presentacion", "precio", "cantidad"]}
+      ]
+      });
+      return pedido; // retornar la instancia del modelo        
+    } 
+    return
+  } catch (error) {
+    return {"error": error}
+  }
 }
 
 
@@ -28,7 +48,7 @@ async function createPedido(data) {
   // crear un pedido
   // se asume que los datos ya han sido validados
 
-  const newPedido = await Pedidos.create(data, {include: [ItemsPedido, Usuario]})
+  const newPedido = await Pedido.create(data, {include: [ItemsPedido, Usuario]})
   if (!newPedido) return
   return newPedido
 }
@@ -61,7 +81,7 @@ async function deletePedido(pedidoId) {
     return { error: `Pedido con id:${pedidoId} no existe.` };
   }
 
-  const deleted = await Pedidos.destroy({ 
+  const deleted = await Pedido.destroy({ 
     where: {id: pedidoId},
     include: ItemsPedido
   }); // cambiar a inactivo
@@ -73,6 +93,8 @@ async function deletePedido(pedidoId) {
   return true;
 
 }
+
+
 function validateItemsPedido(items) {
   return items
 }
@@ -85,11 +107,11 @@ function validatePedido(data) {
           f_pedido,
           f_entrega,
           ItemsPedidos,
-          correo,
+          UsuarioCorreo,
   } = data;
   
   direccion_despacho = String(direccion_despacho).replace(/\W/g, '');
-  const values = { direccion_despacho, status, f_pedido, f_entrega, correo};
+  const values = { direccion_despacho, status, f_pedido, f_entrega, UsuarioCorreo};
   const errors = Object.keys(values).map(key => (values[key] === null || values[key] === undefined) && key).filter(e => e);
   let texto = '';
   if (errors.length) {
