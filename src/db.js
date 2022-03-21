@@ -34,7 +34,7 @@ const { Producto, Usuario, Categoria, ItemsPedido, Review, Pedido } = sequelize.
 
 // Aca vendrian las relaciones
 // Product.hasMany(Review);
-Producto.hasMany(Categoria);
+Producto.belongsToMany(Categoria, { through: 'categoria' });
 Categoria.belongsToMany(Producto, { through: 'categoria' });
 
 Producto.hasMany(Review);
