@@ -173,7 +173,7 @@ const data = {
     categoria: 'res',
     nombre: 'Tomahawk Angus Especial - Nacional',
     precio: '144500',
-    presentacion: [''],
+    presentacion: [],
     descripcion: '', 
     fotos: ['https://static.wixstatic.com/media/91fc24_36916da6d458431f8cd6b08cd5ec8594~mv2.png/v1/fill/w_750,h_750,al_c,q_90,usm_0.66_1.00_0.01/91fc24_36916da6d458431f8cd6b08cd5ec8594~mv2.webp', 'https://static.wixstatic.com/media/91fc24_d19847bbf1b9461f90468ee3444343f2~mv2.png/v1/fill/w_750,h_750,al_c,q_90,usm_0.66_1.00_0.01/91fc24_d19847bbf1b9461f90468ee3444343f2~mv2.webp'],
     stock: 1000,

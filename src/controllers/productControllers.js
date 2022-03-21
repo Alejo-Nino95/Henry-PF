@@ -50,8 +50,8 @@ async function getProduct(identifier, onlyValues = false) {
 async function createProduct(data) {
   // crear un producto
   // se asume que los datos ya han sido validados
-  const { categoria, nombre, precio, descripcion, stock, fotos } = data;
-  const newProduct = await Producto.create({ nombre, precio, descripcion, stock, fotos });
+  const { categoria, nombre, precio, descripcion, stock, fotos, presentacion } = data;
+  const newProduct = await Producto.create({ nombre, precio, descripcion, stock, fotos, presentacion });
   const category = await getCategory(categoria);
 
   if (!category) {
